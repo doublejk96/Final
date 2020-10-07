@@ -23,7 +23,6 @@ public class Player_UI : MonoBehaviour
     void FixedUpdate()
     {
         UpdateHp();
-        UpdateAmmo();
     }
 
     void UpdateHp()
@@ -33,14 +32,5 @@ public class Player_UI : MonoBehaviour
 
         hpGauge.fillAmount = Mathf.Lerp(hpGauge.fillAmount, curHp / maxHp, Time.deltaTime * 10);
         hpValue.text = curHp + " / " + maxHp.ToString(); 
-    }
-
-    void UpdateAmmo()
-    {
-        float curAmmo = player.curAmmo;
-        float maxAmmo = player.maxAmmo;
-
-        ammoGauge.fillAmount = Mathf.Lerp(ammoGauge.fillAmount, curAmmo / maxAmmo, Time.deltaTime * 10);
-        ammoValue.text = curAmmo + " / " + maxAmmo.ToString();
     }
 }

@@ -11,15 +11,6 @@ public class Player : MonoBehaviour
     public int curHp;
     public int maxHp;
 
-    [Header("Ammo")]
-    public int curAmmo;
-    public int maxAmmo;
-
-    [Header("Reload")]
-    public Transform mag;
-    public Transform magPos;
-    public float reloadTime;
-
     [Header("Bullet")]
     public Transform bullet;
     public Transform firePos;
@@ -44,7 +35,6 @@ public class Player : MonoBehaviour
         anim = GetComponent<Animator>();
 
         curHp = maxHp;
-        curAmmo = maxAmmo;
     }
 
     void Update()
@@ -92,25 +82,16 @@ public class Player : MonoBehaviour
 
     void Attack()
     {
-        if (curAmmo > 0)
+        if (shotTime <= 0)
         {
-            if (shotTime <= 0)
-            {
-                anim.SetTrigger("isFire");
-
-                curAmmo--;
-
-                Instantiate(bullet, firePos.position, firePos.rotation);
-                Instantiate(shell, shellPos.position, shellPos.rotation);
-                Activate();
-
-                shotTime = nextShotTime;
-            }
-        }
-        else if (curAmmo <= 0)
-        {
-            StartCoroutine(Reload());
-        }        
+            anim.SetTrigger("isFire");
+            
+            Instantiate(bullet, firePos.position, firePos.rotation);
+            Instantiate(shell, shellPos.position, shellPos.rotation);
+            Activate();
+            
+            shotTime = nextShotTime;
+        }  
     }        
 
     public void Activate()
@@ -131,18 +112,6 @@ public class Player : MonoBehaviour
     void Deactivate()
     {
         fireEffect.SetActive(false);
-    }
-
-    IEnumerator Reload()
-    {
-        shotTime = nextShotTime;
-        anim.SetTrigger("isReloading");
-
-        Instantiate(mag, magPos.position, magPos.rotation);
-
-        yield return new WaitForSeconds(reloadTime);        
-
-        curAmmo = maxAmmo;
     }
 
     public void OnDamage(int damage)
