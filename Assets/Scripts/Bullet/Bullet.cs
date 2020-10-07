@@ -8,14 +8,14 @@ public class Bullet : MonoBehaviour
 
     public float speed;
 
-    void Start()
+    public virtual void Init()
     {
         rigid = GetComponent<Rigidbody>();
 
         rigid.AddForce(transform.forward * speed);
     }
 
-    public virtual void OnCollisionEnter(Collision other)
+    void OnCollisionEnter(Collision other)
     {
         rigid.useGravity = true;
 

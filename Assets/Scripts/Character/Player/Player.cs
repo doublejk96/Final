@@ -14,6 +14,10 @@ public class Player : MonoBehaviour
     [Header("Ammo")]
     public int curAmmo;
     public int maxAmmo;
+
+    [Header("Reload")]
+    public Transform mag;
+    public Transform magPos;
     public float reloadTime;
 
     [Header("Bullet")]
@@ -70,7 +74,7 @@ public class Player : MonoBehaviour
         }
 
         if (closestEnemy == null)
-        {
+        {            
             return;
         }
 
@@ -105,7 +109,6 @@ public class Player : MonoBehaviour
         }
         else if (curAmmo <= 0)
         {
-            shotTime = nextShotTime;
             StartCoroutine(Reload());
         }        
     }        
@@ -132,10 +135,14 @@ public class Player : MonoBehaviour
 
     IEnumerator Reload()
     {
-        yield return new WaitForSeconds(reloadTime);
+        shotTime = nextShotTime;
+        anim.SetTrigger("isReloading");
+
+        Instantiate(mag, magPos.position, magPos.rotation);
+
+        yield return new WaitForSeconds(reloadTime);        
 
         curAmmo = maxAmmo;
-        
     }
 
     public void OnDamage(int damage)

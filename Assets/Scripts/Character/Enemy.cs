@@ -26,4 +26,21 @@ public class Enemy : MonoBehaviour
     {
         transform.LookAt(target.transform);
     }
+
+    public void OnDamage(int damage)
+    {
+        curHp -= damage;
+        curHp = Mathf.Max(0, curHp);
+
+        if (curHp <= 0)
+        {
+            Die();
+        }
+    }
+
+    void Die()
+    {
+
+    }
+
 }
