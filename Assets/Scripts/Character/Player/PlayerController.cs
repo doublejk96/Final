@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
         joystick = FindObjectOfType<FixedJoystick>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         Move();
     }

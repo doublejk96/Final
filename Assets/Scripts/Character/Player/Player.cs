@@ -39,9 +39,9 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        FindEnemy();
-
         shotTime -= Time.deltaTime;
+
+        FindEnemy();        
     }
 
     void FindEnemy()
@@ -66,15 +66,15 @@ public class Player : MonoBehaviour
         if (closestEnemy == null)
         {            
             return;
-        }
-
-        transform.LookAt(closestEnemy.transform);
-        Debug.DrawLine(transform.position, closestEnemy.transform.position);
+        }       
 
         if (closestEnemy != null)
         {
             if (playerCon.isMove == false)
             {
+                transform.LookAt(closestEnemy.transform);
+                Debug.DrawLine(transform.position, closestEnemy.transform.position);
+
                 Attack();
             }
         }
