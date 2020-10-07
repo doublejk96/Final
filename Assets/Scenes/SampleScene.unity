@@ -540,7 +540,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: ab8602ffe16a7194dad40c10b20ad216, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -583,12 +583,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &462483469 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 6074973877564572935, guid: 98ddfe894270c3e44a6d7c6e69327c01,
-    type: 3}
-  m_PrefabInstance: {fileID: 1019595924}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &615273233
 GameObject:
   m_ObjectHideFlags: 0
@@ -860,7 +854,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: c9e6294c9d11cb8d11006bf944295342, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1414,12 +1408,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &1109084674 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 6074973878973511868, guid: 98ddfe894270c3e44a6d7c6e69327c01,
-    type: 3}
-  m_PrefabInstance: {fileID: 1019595924}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1126846004
 GameObject:
   m_ObjectHideFlags: 0
@@ -2123,6 +2111,18 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 7705888036767070904, guid: aa3ac8d6e4dfaea41ac528ea57d6c8b4,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 395a6ee13bdd4d94f885e35b914c9b98,
+        type: 3}
+    - target: {fileID: 7705888038628245182, guid: aa3ac8d6e4dfaea41ac528ea57d6c8b4,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e726e564003f0e047bc5bf8b832ffaec,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa3ac8d6e4dfaea41ac528ea57d6c8b4, type: 3}
 --- !u!224 &1571814943 stripped
@@ -2726,16 +2726,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   curHp: 0
-  maxHp: 5
+  maxHp: 3
   bullet: {fileID: 5790596303715709072, guid: 1479379ae72531e469aebfbf01ec6704, type: 3}
   firePos: {fileID: 1445321165}
   shell: {fileID: 965693081697650883, guid: 8d1fe525b34f3bc4ebdd3351ca383b3c, type: 3}
   shellPos: {fileID: 62904558}
   fireEffect: {fileID: 386945475}
-  sprites: []
-  renderers:
-  - {fileID: 462483469}
-  - {fileID: 1109084674}
   effectTime: 0.1
   shotTime: 1
   nextShotTime: 1
@@ -3779,7 +3775,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 190de33db51695d40b4bfd4fdd0c40ce, type: 2}
+  - {fileID: 2100000, guid: c9e6294c9d11cb8d11006bf944295342, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

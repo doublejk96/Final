@@ -8,9 +8,4 @@ public class TraningEnemy : Enemy
     {
         init();
     }
-
-    void Update()
-    {
-        curHp = maxHp;
-    }
 }

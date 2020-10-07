@@ -25,11 +25,6 @@ public class PlayerController : MonoBehaviour
 
     void Move()
     {
-        if (joystick == null)
-        {
-            Debug.Log("Joystickis Null");
-        }
-
         float x = joystick.Horizontal;
         float z = joystick.Vertical;
 

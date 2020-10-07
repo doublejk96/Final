@@ -8,8 +8,8 @@ public class Player : MonoBehaviour
     private Animator anim;
 
     [Header("HP")]
-    public int curHp;
-    public int maxHp;
+    public float curHp;
+    public float maxHp;
 
     [Header("Bullet")]
     public Transform bullet;
@@ -21,8 +21,6 @@ public class Player : MonoBehaviour
 
     [Header("Effect")]
     public GameObject fireEffect;
-    public Sprite[] sprites;
-    public SpriteRenderer[] renderers;
     public float effectTime;
 
     [Header("Fire Rate")]
@@ -66,9 +64,8 @@ public class Player : MonoBehaviour
         if (closestEnemy == null)
         {            
             return;
-        }       
-
-        if (closestEnemy != null)
+        }     
+        else if (closestEnemy != null)
         {
             if (playerCon.isMove == false)
             {
@@ -94,7 +91,7 @@ public class Player : MonoBehaviour
         }  
     }        
 
-    public void Activate()
+    void Activate()
     {
         fireEffect.SetActive(true);
 
@@ -114,7 +111,7 @@ public class Player : MonoBehaviour
         fireEffect.SetActive(false);
     }
 
-    public void OnDamage(int damage)
+    public void OnDamage(float damage)
     {
         curHp -= damage;
         curHp = Mathf.Max(0, curHp);

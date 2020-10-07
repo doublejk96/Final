@@ -14,6 +14,6 @@ public class Shell : MonoBehaviour
 
         rigid.AddForce(transform.right * force);
 
-        Destroy(gameObject, 5);
+        Destroy(gameObject, 10);
     }
 }

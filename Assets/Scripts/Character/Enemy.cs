@@ -7,8 +7,8 @@ public class Enemy : MonoBehaviour
     private Transform target;
 
     [Header("HP")]
-    public int curHp;
-    public int maxHp;
+    public float curHp;
+    public float maxHp;
 
     [Header("Effect")]
     public GameObject hitEffect;
@@ -30,7 +30,7 @@ public class Enemy : MonoBehaviour
         transform.LookAt(target.transform);
     }
 
-    public void OnDamage(int damage)
+    public void OnDamage(float damage)
     {
         curHp -= damage;
         curHp = Mathf.Max(0, curHp);
