@@ -36,7 +36,6 @@ public class Enemy : MonoBehaviour
         curHp = Mathf.Max(0, curHp);
 
         Instantiate(hitEffect, transform.position, Quaternion.identity);
-        Destroy(hitEffect, 1);
 
         if (curHp <= 0)
         {
