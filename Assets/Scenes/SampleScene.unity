@@ -412,7 +412,7 @@ GameObject:
   - component: {fileID: 319099751}
   - component: {fileID: 319099750}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Training Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -427,11 +427,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 319099749}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e31256453a679ea4ab929a8aaf9b3fce, type: 3}
+  m_Script: {fileID: 11500000, guid: 8fce013f1d12c5b4da56bb5b0571a422, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   curHp: 0
-  maxHp: 5
+  maxHp: 9999
 --- !u!65 &319099751
 BoxCollider:
   m_ObjectHideFlags: 0

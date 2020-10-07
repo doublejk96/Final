@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour
     public int curHp;
     public int maxHp;
 
-    void Start()
+    public virtual void init()
     {
         target = FindObjectOfType<Player>().transform;
 
