@@ -10,6 +10,9 @@ public class Enemy : MonoBehaviour
     public int curHp;
     public int maxHp;
 
+    [Header("Effect")]
+    public GameObject hitEffect;
+
     public virtual void init()
     {
         target = FindObjectOfType<Player>().transform;
@@ -31,6 +34,9 @@ public class Enemy : MonoBehaviour
     {
         curHp -= damage;
         curHp = Mathf.Max(0, curHp);
+
+        Instantiate(hitEffect, transform.position, Quaternion.identity);
+        Destroy(hitEffect, 1);
 
         if (curHp <= 0)
         {

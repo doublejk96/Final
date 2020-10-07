@@ -432,6 +432,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   curHp: 0
   maxHp: 9999
+  hitEffect: {fileID: 100000, guid: f06e78284f831ae469c74624ab5d513b, type: 3}
 --- !u!65 &319099751
 BoxCollider:
   m_ObjectHideFlags: 0
