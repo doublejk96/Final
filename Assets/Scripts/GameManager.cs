@@ -22,35 +22,51 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    [Header("Spawn")]
+    [Header("Portal")]
+    public GameObject portal;
+
+    [Header("Wave")]
     public int enemyCount;
     public float spawnDelay;
+
     private float nextSpawnTime;
+    
+    public int aliveEnemy;
 
     public List<Enemy> enemyList;
     public Enemy enemyPrefab;    
 
     void Start()
     {
-
+        aliveEnemy = enemyCount;
     }
 
     void Update()
-    {
+    {        
         EnemySpawn();
     }
 
     void EnemySpawn()
     {
         if (enemyCount > 0 && nextSpawnTime < Time.time)
-        {           
+        {
             Enemy enemy = Instantiate(enemyPrefab, transform.position, Quaternion.identity);
             enemyCount--;
             nextSpawnTime = Time.time + spawnDelay;
 
             enemy.transform.parent = transform;
+            enemy.OnDie += EnemyDie;
 
             enemyList.Add(enemy);
         }        
+    }
+
+    void EnemyDie()
+    {
+        aliveEnemy--;
+        if (aliveEnemy == 0)
+        {
+            portal.SetActive(true);
+        }
     }
 }

@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    public event System.Action OnDie;
+
     private Animator anim;
-    private Rigidbody rigid;
 
     private Transform target;
 
@@ -30,7 +31,6 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
-        rigid = GetComponent<Rigidbody>();
 
         target = FindObjectOfType<Player>().transform;
 
@@ -92,8 +92,13 @@ public class Enemy : MonoBehaviour
         Time.timeScale = 1;
     }
 
-    void Die()
+    public void Die()
     {
+        if (OnDie != null)
+        {
+            OnDie();
+        }
+
         die = true;
 
         anim.SetTrigger("isDie");  
