@@ -66,7 +66,12 @@ public class GameManager : MonoBehaviour
         aliveEnemy--;
         if (aliveEnemy == 0)
         {
-            portal.SetActive(true);
+            Invoke("OpenPortal", 1);
         }
+    }
+
+    void OpenPortal()
+    {
+        portal.SetActive(true);
     }
 }

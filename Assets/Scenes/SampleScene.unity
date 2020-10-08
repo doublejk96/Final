@@ -19742,8 +19742,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   portal: {fileID: 1054251749}
-  enemyCount: 3
-  spawnDelay: 3
+  enemyCount: 1
+  spawnDelay: 1
   enemyList: []
   enemyPrefab: {fileID: 2440789794272760423, guid: 64f86b4209ecc1746b4086c77e2419ae,
     type: 3}
