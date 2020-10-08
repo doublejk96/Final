@@ -123,4 +123,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b69baa9072f0de40848f5d756eb8533, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 120
+  forceMin: 90
+  forceMax: 150

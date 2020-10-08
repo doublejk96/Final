@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerBullet : Bullet
+public class EnemyBullet : Bullet
 {
-    private Enemy enemy;
+    private Player player;
 
     [Header("Damage")]
     public int damage;
@@ -13,16 +13,16 @@ public class PlayerBullet : Bullet
     {
         Init();
 
-        enemy = FindObjectOfType<Enemy>();
+        player = FindObjectOfType<Player>();
     }
 
     public override void OnCollisionEnter(Collision other)
     {
         base.OnCollisionEnter(other);
 
-        if (other.gameObject.tag == "Enemy")
+        if (other.gameObject.tag == "Player")
         {
-            enemy.OnDamage(damage);
+            player.OnDamage(damage);
 
             Destroy(gameObject);
         }

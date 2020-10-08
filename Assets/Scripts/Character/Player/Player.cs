@@ -12,11 +12,11 @@ public class Player : MonoBehaviour
     public float maxHp;
 
     [Header("Bullet")]
-    public Transform bullet;
+    public Transform bulletPrefab;
     public Transform firePos;
 
     [Header("Shell")]
-    public Transform shell;
+    public Transform shellPrefab;
     public Transform shellPos;
 
     [Header("Effect")]
@@ -83,8 +83,8 @@ public class Player : MonoBehaviour
         {
             anim.SetTrigger("isFire");
             
-            Instantiate(bullet, firePos.position, firePos.rotation);
-            Instantiate(shell, shellPos.position, shellPos.rotation);
+            Instantiate(bulletPrefab, firePos.position, firePos.rotation);
+            Instantiate(shellPrefab, shellPos.position, shellPos.rotation);
             Activate();
             
             shotTime = nextShotTime;
