@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
 
     private float nextSpawnTime;
     
-    public int aliveEnemy;
+    private int aliveEnemy;
 
     public List<Enemy> enemyList;
     public Enemy enemyPrefab;    
