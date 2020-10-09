@@ -27,6 +27,7 @@ public class Enemy : MonoBehaviour
     public GameObject fireEffect;
     public GameObject hitEffect;
     public GameObject dieEffect;
+    public GameObject dieEffect2;
     private float effectTime = 0.05f;
 
     private bool die;
@@ -135,6 +136,7 @@ public class Enemy : MonoBehaviour
     void DieEffect()
     {
         Instantiate(dieEffect, transform.localPosition, Quaternion.identity);
+        Instantiate(dieEffect2, transform.localPosition, Quaternion.identity);
     }
 
 }
