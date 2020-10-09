@@ -122,7 +122,7 @@ public class Player : MonoBehaviour
         curHp -= damage;
         curHp = Mathf.Max(0, curHp);
 
-        anim.SetTrigger("isHit");
+        SlowTime();
         cam.VibrateTime(0.1f, 0.1f);
         HitEffectOn();
 
@@ -130,6 +130,18 @@ public class Player : MonoBehaviour
         {
             Die();
         }
+    }
+
+    void SlowTime()
+    {
+        Time.timeScale = 0.1f;
+
+        Invoke("TimeReturn", 0.011f);
+    }
+
+    void TimeReturn()
+    {
+        Time.timeScale = 1;
     }
 
     void HitEffectOn()
