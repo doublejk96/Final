@@ -23,8 +23,8 @@ public class Player : MonoBehaviour
     [Header("Effect")]
     public GameObject fireEffect;
     public GameObject hitEffect;
+    public GameObject hitEffect2;
     private float effectTime = 0.05f;
-
 
     [Header("Fire Rate")]
     public float shotTime;
@@ -91,13 +91,13 @@ public class Player : MonoBehaviour
             
             Instantiate(bulletPrefab, firePos.position, firePos.rotation);
             Instantiate(shellPrefab, shellPos.position, shellPos.rotation);
-            Activate();
+            FireEffectOn();
             
             shotTime = nextShotTime;
         }  
     }        
 
-    void Activate()
+    void FireEffectOn()
     {
         fireEffect.SetActive(true);
 
@@ -109,12 +109,12 @@ public class Player : MonoBehaviour
         }
         */
 
-        Invoke("Deactivate", effectTime);
+        Invoke("FireEffectOff", effectTime);
     }
 
-    void Deactivate()
+    void FireEffectOff()
     {
-        fireEffect.SetActive(false);
+        fireEffect.SetActive(false);        
     }
 
     public void OnDamage(float damage)
@@ -122,13 +122,28 @@ public class Player : MonoBehaviour
         curHp -= damage;
         curHp = Mathf.Max(0, curHp);
 
+        anim.SetTrigger("isHit");
         cam.VibrateTime(0.1f, 0.1f);
-        Instantiate(hitEffect, transform.position, Quaternion.identity);
+        HitEffectOn();
 
         if (curHp <= 0)
         {
             Die();
         }
+    }
+
+    void HitEffectOn()
+    {
+        hitEffect.SetActive(true);
+        hitEffect2.SetActive(true);
+
+        Invoke("HitEffectOff", 0.25f);
+    }
+
+    void HitEffectOff()
+    {
+        hitEffect.SetActive(false);
+        hitEffect2.SetActive(false);
     }
 
     void Die()
