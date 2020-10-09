@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Dynamic;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -22,9 +23,9 @@ public class Player : MonoBehaviour
 
     [Header("Effect")]
     public Vector3 offset;
-    public GameObject fireEffect;
+    public GameObject fireEffect;    
     public GameObject hitEffect;
-    public GameObject hitEffect2;
+    public GameObject hitLight;
     private float effectTime = 0.05f;
 
     [Header("Fire Rate")]
@@ -126,25 +127,12 @@ public class Player : MonoBehaviour
         cam.VibrateTime(0.1f, 0.1f);
 
         Vector3 effectPos = transform.position + offset;
-        Instantiate(hitEffect2, effectPos, Quaternion.identity);
-        HitEffectOn();
+        Instantiate(hitEffect, effectPos, Quaternion.identity);
 
         if (curHp <= 0)
         {
             Die();
         }
-    }
-
-    void HitEffectOn()
-    {
-        hitEffect.SetActive(true);
-
-        Invoke("HitEffectOff", 0.25f);
-    }
-
-    void HitEffectOff()
-    {
-        hitEffect.SetActive(false);
     }
 
     void Die()
