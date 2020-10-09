@@ -26,9 +26,7 @@ public class Enemy : MonoBehaviour
     [Header("Effect")]
     public GameObject fireEffect;
     public GameObject hitEffect;
-    public GameObject hitLight;
     public GameObject dieEffect;
-    public GameObject dieEffect2;
     private float effectTime = 0.05f;
 
     private bool die;
@@ -97,7 +95,6 @@ public class Enemy : MonoBehaviour
                 
         SlowTime();
         Instantiate(hitEffect, transform.position, Quaternion.identity);
-        HitLightOn();
 
         if (curHp <= 0)
         {
@@ -117,18 +114,6 @@ public class Enemy : MonoBehaviour
     void TimeReturn()
     {
         Time.timeScale = 1;
-    }
-
-    void HitLightOn()
-    {
-        hitLight.SetActive(true);
-
-        Invoke("HitLightOff", 0.25f);
-    }
-
-    void HitLightOff()
-    {
-        hitLight.SetActive(false);
     }
 
     public void Die()
@@ -151,7 +136,6 @@ public class Enemy : MonoBehaviour
     void DieEffect()
     {
         Instantiate(dieEffect, transform.localPosition, Quaternion.identity);
-        Instantiate(dieEffect2, transform.localPosition, Quaternion.identity);
     }
 
 }
