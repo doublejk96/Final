@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
-{
+{    
     private static GameManager instance;
     public static GameManager Instance
     {
@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
     private int aliveEnemy;
 
     public List<Enemy> enemyList;
-    public Enemy enemyPrefab;    
+    public Enemy enemyPrefab;
 
     void Start()
     {

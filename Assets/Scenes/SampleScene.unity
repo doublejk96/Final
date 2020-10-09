@@ -356,7 +356,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a95b4a98e89008948bf09d0a3d651367, type: 2}
+  - {fileID: 2100000, guid: 9953ab10591f5f849898310e87f1e52c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -760,7 +760,7 @@ PrefabInstance:
     - target: {fileID: 6074973877396269100, guid: 98ddfe894270c3e44a6d7c6e69327c01,
         type: 3}
       propertyPath: m_Color.g
-      value: 0.60784316
+      value: 0.2861971
       objectReference: {fileID: 0}
     - target: {fileID: 6074973877396269100, guid: 98ddfe894270c3e44a6d7c6e69327c01,
         type: 3}
@@ -775,7 +775,7 @@ PrefabInstance:
     - target: {fileID: 6074973877396269100, guid: 98ddfe894270c3e44a6d7c6e69327c01,
         type: 3}
       propertyPath: m_Range
-      value: 4
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6074973877396269100, guid: 98ddfe894270c3e44a6d7c6e69327c01,
         type: 3}
@@ -786,6 +786,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Shadows.m_NearPlane
       value: 0.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 6074973877396269100, guid: 98ddfe894270c3e44a6d7c6e69327c01,
+        type: 3}
+      propertyPath: m_Shadows.m_Bias
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6074973877396269100, guid: 98ddfe894270c3e44a6d7c6e69327c01,
+        type: 3}
+      propertyPath: m_Shadows.m_Strength
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6074973877396269100, guid: 98ddfe894270c3e44a6d7c6e69327c01,
+        type: 3}
+      propertyPath: m_Type
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6074973877576878086, guid: 98ddfe894270c3e44a6d7c6e69327c01,
         type: 3}
@@ -20488,7 +20503,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   curHp: 0
-  maxHp: 99
+  maxHp: 5
   bulletPrefab: {fileID: 5790596303715709072, guid: 1479379ae72531e469aebfbf01ec6704,
     type: 3}
   firePos: {fileID: 1445321165}
@@ -20498,7 +20513,7 @@ MonoBehaviour:
   fireEffect: {fileID: 386945475}
   hitEffect: {fileID: 100000, guid: f06e78284f831ae469c74624ab5d513b, type: 3}
   shotTime: 1
-  nextShotTime: 50
+  nextShotTime: 1
 --- !u!95 &919132149192524911
 Animator:
   serializedVersion: 3
