@@ -105,8 +105,6 @@ public class Enemy : MonoBehaviour
 
         Invoke("DieEffect", 0.89f);
 
-        Destroy(gameObject, 0.89f);
-
         GameManager.Instance.enemyList.Remove(this);
     }
 

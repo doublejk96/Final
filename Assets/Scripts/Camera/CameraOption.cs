@@ -7,7 +7,7 @@ public class CameraOption : MonoBehaviour
     private Transform target;
 
     [Header("Shake")]
-    public float ShakeAmount;
+    private float ShakeAmount;
     private float ShakeTime;
 
     [Header("Position")]
@@ -18,9 +18,10 @@ public class CameraOption : MonoBehaviour
         target = FindObjectOfType<Player>().transform;        
     }
 
-    public void VibrateTime(float time)
+    public void VibrateTime(float time, float amount)
     {
         ShakeTime = time;
+        ShakeAmount = amount;
     }
 
     void Update()

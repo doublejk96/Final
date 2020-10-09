@@ -744,7 +744,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06eea23555c7516418b20e174c945722, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShakeAmount: 0.05
   offset: {x: 0, y: 5, z: -5}
 --- !u!1001 &1019595924
 PrefabInstance:
@@ -20497,9 +20496,9 @@ MonoBehaviour:
     type: 3}
   shellPos: {fileID: 62904558}
   fireEffect: {fileID: 386945475}
-  effectTime: 0.1
+  hitEffect: {fileID: 100000, guid: f06e78284f831ae469c74624ab5d513b, type: 3}
   shotTime: 1
-  nextShotTime: 1
+  nextShotTime: 50
 --- !u!95 &919132149192524911
 Animator:
   serializedVersion: 3

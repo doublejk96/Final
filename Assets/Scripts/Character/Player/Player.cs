@@ -22,7 +22,9 @@ public class Player : MonoBehaviour
 
     [Header("Effect")]
     public GameObject fireEffect;
-    public float effectTime;
+    public GameObject hitEffect;
+    private float effectTime = 0.05f;
+
 
     [Header("Fire Rate")]
     public float shotTime;
@@ -85,7 +87,7 @@ public class Player : MonoBehaviour
         {
             anim.SetTrigger("isFire");
 
-            cam.VibrateTime(0.1f);
+            cam.VibrateTime(0.1f, 0.05f);
             
             Instantiate(bulletPrefab, firePos.position, firePos.rotation);
             Instantiate(shellPrefab, shellPos.position, shellPos.rotation);
@@ -119,6 +121,9 @@ public class Player : MonoBehaviour
     {
         curHp -= damage;
         curHp = Mathf.Max(0, curHp);
+
+        cam.VibrateTime(0.1f, 0.1f);
+        Instantiate(hitEffect, transform.position, Quaternion.identity);
 
         if (curHp <= 0)
         {
