@@ -19,5 +19,11 @@ public class UI_PauseMenu : UI_Base
 
             Show(false);
         }
+
+        if (button.name == "Quit Button")
+        {
+            UnityEditor.EditorApplication.isPlaying = false;
+            Application.Quit();
+        }
     }
 }
