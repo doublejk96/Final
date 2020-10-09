@@ -21,6 +21,7 @@ public class Player : MonoBehaviour
     public Transform shellPos;
 
     [Header("Effect")]
+    public Vector3 offset;
     public GameObject fireEffect;
     public GameObject hitEffect;
     public GameObject hitEffect2;
@@ -122,8 +123,10 @@ public class Player : MonoBehaviour
         curHp -= damage;
         curHp = Mathf.Max(0, curHp);
 
-        SlowTime();
         cam.VibrateTime(0.1f, 0.1f);
+
+        Vector3 effectPos = transform.position + offset;
+        Instantiate(hitEffect2, effectPos, Quaternion.identity);
         HitEffectOn();
 
         if (curHp <= 0)
@@ -132,22 +135,9 @@ public class Player : MonoBehaviour
         }
     }
 
-    void SlowTime()
-    {
-        Time.timeScale = 0.1f;
-
-        Invoke("TimeReturn", 0.011f);
-    }
-
-    void TimeReturn()
-    {
-        Time.timeScale = 1;
-    }
-
     void HitEffectOn()
     {
         hitEffect.SetActive(true);
-        hitEffect2.SetActive(true);
 
         Invoke("HitEffectOff", 0.25f);
     }
@@ -155,7 +145,6 @@ public class Player : MonoBehaviour
     void HitEffectOff()
     {
         hitEffect.SetActive(false);
-        hitEffect2.SetActive(false);
     }
 
     void Die()
