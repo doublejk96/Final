@@ -60,15 +60,15 @@ public class CFX_Demo_New : MonoBehaviour
 	{
 		if(Input.GetKeyDown(KeyCode.LeftArrow))
 		{
-			prevParticle();
+			PrevParticle();
 		}
 		else if(Input.GetKeyDown(KeyCode.RightArrow))
 		{
-			nextParticle();
+			NextParticle();
 		}
 		else if(Input.GetKeyDown(KeyCode.Delete))
 		{
-			destroyParticles();
+			DestroyParticles();
 		}
 		
 		if(Input.GetMouseButtonDown(0))
@@ -76,7 +76,7 @@ public class CFX_Demo_New : MonoBehaviour
 			RaycastHit hit = new RaycastHit();
 			if(groundCollider.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 9999f))
 			{
-				GameObject particle = spawnParticle();
+				GameObject particle = SpawnParticle();
 				particle.transform.position = hit.point + particle.transform.position;
 			}
 		}
@@ -137,12 +137,12 @@ public class CFX_Demo_New : MonoBehaviour
 
 	public void OnPreviousEffect()
 	{
-		prevParticle();
+		PrevParticle();
 	}
 
 	public void OnNextEffect()
 	{
-		nextParticle();
+		NextParticle();
 	}
 	
 	//-------------------------------------------------------------
@@ -157,7 +157,7 @@ public class CFX_Demo_New : MonoBehaviour
 	//-------------------------------------------------------------
 	// SYSTEM
 	
-	private GameObject spawnParticle()
+	private GameObject SpawnParticle()
 	{
 		GameObject particles = (GameObject)Instantiate(ParticleExamples[exampleIndex]);
 		particles.transform.position = new Vector3(0,particles.transform.position.y,0);
@@ -209,14 +209,14 @@ public class CFX_Demo_New : MonoBehaviour
 		}
 	}
 	
-	private void prevParticle()
+	private void PrevParticle()
 	{
 		exampleIndex--;
 		if(exampleIndex < 0) exampleIndex = ParticleExamples.Length - 1;
 		
 		UpdateUI();
 	}
-	private void nextParticle()
+	private void NextParticle()
 	{
 		exampleIndex++;
 		if(exampleIndex >= ParticleExamples.Length) exampleIndex = 0;
@@ -224,7 +224,7 @@ public class CFX_Demo_New : MonoBehaviour
 		UpdateUI();
 	}
 	
-	private void destroyParticles()
+	private void DestroyParticles()
 	{
 		for(int i = onScreenParticles.Count - 1; i >= 0; i--)
 		{

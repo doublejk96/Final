@@ -721,7 +721,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   curHp: 0
-  maxHp: 1
+  maxHp: 5
   bulletPrefab: {fileID: 1189481227699301376, guid: 763d9a6262fa1fa429a81859beee96b9,
     type: 3}
   firePos: {fileID: 2440789794284763960}
@@ -1244,7 +1244,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9b06734f58b1f6d4ea3efa59d1256c9b, type: 2}
+  - {fileID: 2100000, guid: ebb28edbbcd5d16458da44b2df0df400, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

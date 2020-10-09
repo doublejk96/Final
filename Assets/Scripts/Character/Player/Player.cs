@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
 {
     private PlayerController playerCon;
     private Animator anim;
+    private CameraOption cam;
 
     [Header("HP")]
     public float curHp;
@@ -31,6 +32,7 @@ public class Player : MonoBehaviour
     {
         playerCon = GetComponent<PlayerController>();
         anim = GetComponent<Animator>();
+        cam = GameObject.FindWithTag("MainCamera").GetComponent<CameraOption>();
 
         curHp = maxHp;
     }
@@ -82,6 +84,8 @@ public class Player : MonoBehaviour
         if (shotTime <= 0)
         {
             anim.SetTrigger("isFire");
+
+            cam.VibrateTime(0.1f);
             
             Instantiate(bulletPrefab, firePos.position, firePos.rotation);
             Instantiate(shellPrefab, shellPos.position, shellPos.rotation);
