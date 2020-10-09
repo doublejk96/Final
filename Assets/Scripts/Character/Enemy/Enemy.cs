@@ -58,7 +58,7 @@ public class Enemy : MonoBehaviour
     void Attack()
     {
         if (shotTime <= 0)
-        {
+        {            
             anim.SetTrigger("isFire");
 
             Instantiate(bulletPrefab, firePos.position, firePos.rotation);
@@ -94,7 +94,6 @@ public class Enemy : MonoBehaviour
         curHp = Mathf.Max(0, curHp);
                 
         SlowTime();
-        Instantiate(hitEffect, transform.position, Quaternion.identity);
 
         if (curHp <= 0)
         {

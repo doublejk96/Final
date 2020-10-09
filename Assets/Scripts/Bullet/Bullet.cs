@@ -21,7 +21,5 @@ public class Bullet : MonoBehaviour
     {
         rigid.useGravity = true;
         rigid.AddForce(transform.forward * - speed / 10);
-
-        Destroy(gameObject, 3);
     }
 }
