@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.Remoting.Messaging;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -22,85 +23,65 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    [Header("Portal")]
-    public GameObject portal;
+    [System.Serializable]
+    public class Wave
+    {
+        public int enemyCount;
+    }
 
-    [Header("Wave")]
-    public int enemyCount;
-    public int bossCount;
-    public float spawnDelay;
+    public Wave[] waves;
 
-    private float nextSpawnTime;
-    
-    private int aliveEnemy;
-    private int aliveBoss;
+    Wave currentWave;
+    int curWaveNum;
 
     public List<Enemy> enemyList;
-    public List<Enemy> bossList;
-    public Enemy enemyPrefab;    
-    public Enemy bossPrefab;
+
+    public Enemy[] enemyPrefab;
+
+    int RemainingSpawnEnemy; // 남아있는 소환될 적
+    float nextSpawnTime; // 다음 스폰 시간
+
+    MapGenerator map;
 
     void Start()
     {
-        aliveEnemy = enemyCount;
-        aliveBoss = bossCount;
+        map = FindObjectOfType<MapGenerator>();
+
+        NextWave();
     }
 
     void Update()
-    {        
+    {     
         EnemySpawn();
+    }
+
+    public void NextWave()
+    {
+        curWaveNum++;
+
+        if (curWaveNum - 1 < waves.Length)
+        {
+            currentWave = waves[curWaveNum - 1];
+
+            RemainingSpawnEnemy = currentWave.enemyCount;
+        }
     }
 
     void EnemySpawn()
     {
-        if (enemyCount > 0 && nextSpawnTime < Time.time)
+        Transform randomTIle = map.GetRandomOpenTile();
+
+        // 소환될 적이 0보다 많고, 현재 시간이 다음 스폰 시간보다 크다면
+        if (RemainingSpawnEnemy > 0 && nextSpawnTime < Time.time)
         {
-            Enemy enemy = Instantiate(enemyPrefab, transform.position, Quaternion.identity);
-            enemyCount--;
-            nextSpawnTime = Time.time + spawnDelay;
+            for (int i = 0; i < enemyPrefab.Length; i++)
+            {
+                RemainingSpawnEnemy--;
 
-            enemy.transform.parent = transform;
-            enemy.OnDie += EnemyDie;
-
-            enemyList.Add(enemy);
-        }        
-    }
-
-    void EnemyDie()
-    {
-        aliveEnemy--;
-        if (aliveEnemy == 0)
-        {
-            Invoke("BossSpawn", 1);
+                Enemy enemy = Instantiate(enemyPrefab[i], randomTIle.position, Quaternion.identity) as Enemy;
+                enemy.transform.parent = transform;
+                enemyList.Add(enemy);                
+            }            
         }
-    }
-
-    void BossSpawn()
-    {
-        if (bossCount > 0 && nextSpawnTime < Time.time)
-        {
-            Enemy boss = Instantiate(bossPrefab, transform.position, Quaternion.identity);
-            bossCount--;
-            nextSpawnTime = Time.time + spawnDelay;
-
-            boss.transform.parent = transform;
-            boss.OnDie += BossDie;
-
-            enemyList.Add(boss);
-        }
-    }
-
-    void BossDie()
-    {
-        aliveBoss--;
-        if (aliveBoss == 0)
-        {
-            Invoke("OpenPortal", 1);
-        }
-    }
-
-    void OpenPortal()
-    {
-        portal.SetActive(true);
     }
 }

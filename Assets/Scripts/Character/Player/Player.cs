@@ -3,42 +3,22 @@ using System.Collections.Generic;
 using System.Dynamic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : Character
 {
-    private PlayerController playerCon;
-    private Animator anim;
+    private PlayerController playerCon;    
     private CameraOption cam;
 
-    [Header("HP")]
-    public float curHp;
-    public float maxHp;
-
-    [Header("Bullet")]
-    public Transform bulletPrefab;
-    public Transform firePos;
-
-    [Header("Shell")]
-    public Transform shellPrefab;
-    public Transform shellPos;
-
     [Header("Effect")]
-    public Vector3 offset;
-    public GameObject fireEffect;    
+    public Vector3 offset;       
     public GameObject hitEffect;
-    public GameObject hitLight;
-    private float effectTime = 0.05f;
-
-    [Header("Fire Rate")]
-    public float shotTime;
-    public float nextShotTime;  
 
     void Start()
     {
         playerCon = GetComponent<PlayerController>();
-        anim = GetComponent<Animator>();
+        
         cam = GameObject.FindWithTag("MainCamera").GetComponent<CameraOption>();
 
-        curHp = maxHp;
+        Init();
     }
 
     void Update()
@@ -81,62 +61,15 @@ public class Player : MonoBehaviour
                 Attack();
             }
         }
-    }
-
-    void Attack()
+    }      
+        
+    public override void OnDamage(float damage)
     {
-        if (shotTime <= 0)
-        {
-            anim.SetTrigger("isFire");
-
-            cam.VibrateTime(0.1f, 0.05f);
-            
-            Instantiate(bulletPrefab, firePos.position, firePos.rotation);
-            Instantiate(shellPrefab, shellPos.position, shellPos.rotation);
-            FireEffectOn();
-            
-            shotTime = nextShotTime;
-        }  
-    }        
-
-    void FireEffectOn()
-    {
-        fireEffect.SetActive(true);
-
-        /*
-        int index = Random.Range(0, sprites.Length);
-        for (int i = 0; i < renderers.Length; i++)
-        {
-            renderers[i].sprite = sprites[index];
-        }
-        */
-
-        Invoke("FireEffectOff", effectTime);
-    }
-
-    void FireEffectOff()
-    {
-        fireEffect.SetActive(false);        
-    }
-
-    public void OnDamage(float damage)
-    {
-        curHp -= damage;
-        curHp = Mathf.Max(0, curHp);
+        base.OnDamage(damage);
 
         cam.VibrateTime(0.1f, 0.1f);
 
         Vector3 effectPos = transform.position + offset;
         Instantiate(hitEffect, effectPos, Quaternion.identity);
-
-        if (curHp <= 0)
-        {
-            Die();
-        }
-    }
-
-    public void Die()
-    {
-        Debug.Log("Die");
     }
 }
