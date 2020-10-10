@@ -19,6 +19,10 @@ public class Enemy : MonoBehaviour
     public Transform bulletPrefab;
     public Transform firePos;
 
+    [Header("Shell")]
+    public Transform shellPrefab;
+    public Transform shellPos;
+
     [Header("Fire Rate")]
     public float shotTime;
     public float nextShotTime;
@@ -62,6 +66,7 @@ public class Enemy : MonoBehaviour
             anim.SetTrigger("isFire");
 
             Instantiate(bulletPrefab, firePos.position, firePos.rotation);
+            Instantiate(shellPrefab, shellPos.position, shellPos.rotation);
             Activate();
 
             shotTime = nextShotTime;
@@ -130,6 +135,19 @@ public class Enemy : MonoBehaviour
         Destroy(gameObject, 0.89f);
 
         GameManager.Instance.enemyList.Remove(this);
+    }
+
+    public void FallDie()
+    {
+        if (OnDie != null)
+        {
+            OnDie();
+        }
+
+        die = true;
+
+        DieEffect();
+        Destroy(gameObject);
     }
 
     void DieEffect()

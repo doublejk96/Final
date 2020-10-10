@@ -1133,7 +1133,7 @@ GameObject:
   - component: {fileID: 8198883013283402553}
   - component: {fileID: 8198883013283402558}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Boss
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1148,7 +1148,7 @@ Transform:
   m_GameObject: {fileID: 8198883013283402552}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5, y: 0.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 8198883012697634761}
   - {fileID: 8198883013101634810}
@@ -1218,7 +1218,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   curHp: 0
-  maxHp: 1
+  maxHp: 2
   bulletPrefab: {fileID: 1189481227699301376, guid: 763d9a6262fa1fa429a81859beee96b9,
     type: 3}
   firePos: {fileID: 8198883013271419489}

@@ -27,18 +27,23 @@ public class GameManager : MonoBehaviour
 
     [Header("Wave")]
     public int enemyCount;
+    public int bossCount;
     public float spawnDelay;
 
     private float nextSpawnTime;
     
     private int aliveEnemy;
+    private int aliveBoss;
 
     public List<Enemy> enemyList;
-    public Enemy enemyPrefab;
+    public List<Enemy> bossList;
+    public Enemy enemyPrefab;    
+    public Enemy bossPrefab;
 
     void Start()
     {
         aliveEnemy = enemyCount;
+        aliveBoss = bossCount;
     }
 
     void Update()
@@ -65,6 +70,30 @@ public class GameManager : MonoBehaviour
     {
         aliveEnemy--;
         if (aliveEnemy == 0)
+        {
+            Invoke("BossSpawn", 1);
+        }
+    }
+
+    void BossSpawn()
+    {
+        if (bossCount > 0 && nextSpawnTime < Time.time)
+        {
+            Enemy boss = Instantiate(bossPrefab, transform.position, Quaternion.identity);
+            bossCount--;
+            nextSpawnTime = Time.time + spawnDelay;
+
+            boss.transform.parent = transform;
+            boss.OnDie += BossDie;
+
+            enemyList.Add(boss);
+        }
+    }
+
+    void BossDie()
+    {
+        aliveBoss--;
+        if (aliveBoss == 0)
         {
             Invoke("OpenPortal", 1);
         }

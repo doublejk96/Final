@@ -135,8 +135,8 @@ public class Player : MonoBehaviour
         }
     }
 
-    void Die()
+    public void Die()
     {
-
+        Debug.Log("Die");
     }
 }
