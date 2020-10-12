@@ -23,9 +23,7 @@ public class Enemy : Character
         Init();
 
         target = FindObjectOfType<Player>().transform;
-        agent = GetComponent<NavMeshAgent>();
-
-        StartCoroutine(UpdatePath());
+        agent = GetComponent<NavMeshAgent>();        
     }
 
     void Update()
@@ -43,7 +41,11 @@ public class Enemy : Character
     void ChasePlayer()
     {
         float dis = Vector3.Distance(transform.position, target.position);
-        if (dis < stopDis && dis > retreatDis)
+        if (dis > stopDis)
+        {
+            StartCoroutine(UpdatePath());
+        }
+        else if (dis < stopDis && dis > retreatDis)
         {
             anim.SetBool("isMove", false);
 
