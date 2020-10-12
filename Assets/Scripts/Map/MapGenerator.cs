@@ -12,7 +12,7 @@ public class MapGenerator : MonoBehaviour
 
     public Vector2 maxMapSize;
     public Transform tilePrefab;
-    public Transform obstaclePrefab;
+    public Transform[] obstaclePrefab;
     public Transform navmeshMaskPrefab;
     public Transform navmeshFloor;    
 
@@ -90,7 +90,8 @@ public class MapGenerator : MonoBehaviour
             if (randomCoord != curMap.mapCenter && MapIsFullAccessible(obstacleMap, curObstacleCount))
             {
                 Vector3 obstaclePos = CoordToPos(randomCoord.x, randomCoord.y);
-                Transform newObstacle = Instantiate(obstaclePrefab, obstaclePos + Vector3.up * 0.5f, Quaternion.identity) as Transform;
+                int rand = Random.Range(0, obstaclePrefab.Length);
+                Transform newObstacle = Instantiate(obstaclePrefab[rand], obstaclePos + Vector3.up * 0.5f, Quaternion.identity) as Transform;
                 newObstacle.localScale = Vector3.one * (1 - outLine) * tileSize;
                 newObstacle.parent = mapHolder;
 
