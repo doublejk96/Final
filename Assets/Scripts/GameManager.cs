@@ -45,9 +45,6 @@ public class GameManager : MonoBehaviour
     int RemainingSpawnEnemy;
     int RemainingAliveEnemy;
 
-    int RemainingSpawnBoss;
-    int RemainingAliveBoss;
-
     private MapGenerator map;
 
     void Start()
@@ -74,10 +71,7 @@ public class GameManager : MonoBehaviour
             RemainingAliveEnemy = RemainingSpawnEnemy;
         }
         else if (curWaveNum - 1 >= waves.Length)
-        {
-            RemainingSpawnBoss = currentWave.bossCount;
-            RemainingAliveBoss = RemainingSpawnBoss;
-
+        {          
             BossSpawn();
         }
     }    
@@ -103,22 +97,17 @@ public class GameManager : MonoBehaviour
 
     void BossSpawn()
     {
-        Transform randomTIle = map.GetRandomOpenTile();
-
-        if (RemainingSpawnBoss > 0)
-        {
-            RemainingSpawnBoss--;
+        Transform randomTIle = map.GetRandomOpenTile();       
             
-            int i = Random.Range(0, bossPrefab.Count);
+        int i = Random.Range(0, bossPrefab.Count);
 
-            GameObject bossGo = Instantiate(bossPrefab[i], randomTIle.position, Quaternion.identity);
-            bossPrefab.RemoveAt(i);
+        GameObject bossGo = Instantiate(bossPrefab[i], randomTIle.position, Quaternion.identity);
+        bossPrefab.RemoveAt(i);
 
-            Enemy boss = bossGo.GetComponent<Enemy>();
-            boss.transform.parent = transform;
-            bossList.Add(boss);
-            boss.OnDie += BossDie;
-        }
+        Enemy boss = bossGo.GetComponent<Enemy>();
+        boss.transform.parent = transform;
+        bossList.Add(boss);
+        boss.OnDie += BossDie;
     }
 
     void EnemyDie()
@@ -132,10 +121,6 @@ public class GameManager : MonoBehaviour
 
     void BossDie()
     {
-        RemainingAliveBoss--;
-        if (RemainingAliveBoss == 0)
-        {
-            Debug.Log("클리어");
-        }
+        Debug.Log("클리어");
     }
 }

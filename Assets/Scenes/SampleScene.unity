@@ -13449,6 +13449,8 @@ MonoBehaviour:
   waves:
   - enemyCount: 1
     bossCount: 1
+  - enemyCount: 2
+    bossCount: 2
   enemyList: []
   bossList: []
   enemyPrefab:
