@@ -716,7 +716,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d48454e4a02d5b8459283760ad8800f5, type: 2}
+  - {fileID: 2100000, guid: ebb28edbbcd5d16458da44b2df0df400, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1134,7 +1134,7 @@ GameObject:
   - component: {fileID: 8198883013283402558}
   - component: {fileID: 7237816126637930528}
   m_Layer: 0
-  m_Name: Red Enemy
+  m_Name: Balck Boss
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1149,7 +1149,7 @@ Transform:
   m_GameObject: {fileID: 8198883013283402552}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5, y: 0.5, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8198883012697634761}
   - {fileID: 8198883013101634810}
@@ -1219,7 +1219,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   curHp: 0
-  maxHp: 5
+  maxHp: 10
   bulletPrefab: {fileID: 1189481227699301376, guid: 763d9a6262fa1fa429a81859beee96b9,
     type: 3}
   firePos: {fileID: 8198883013271419489}

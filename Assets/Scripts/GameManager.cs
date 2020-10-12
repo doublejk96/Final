@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.Runtime.Remoting.Messaging;
 using UnityEngine;
 
@@ -27,6 +28,7 @@ public class GameManager : MonoBehaviour
     public class Wave
     {
         public int enemyCount;
+        public int bossCount;
     }
 
     public Wave[] waves;
@@ -35,27 +37,33 @@ public class GameManager : MonoBehaviour
     int curWaveNum;
 
     public List<Enemy> enemyList;
-
     public Enemy[] enemyPrefab;
 
-    int RemainingSpawnEnemy; // 남아있는 소환될 적
-    float nextSpawnTime; // 다음 스폰 시간
+    public List<Enemy> bossList;
+    public Enemy[] bossPrefab;
 
-    MapGenerator map;
+    int RemainingSpawnEnemy;
+    int RemainingAliveEnemy;
+
+    int RemainingSpawnBoss;
+    int RemainingAliveBoss;
+
+    private MapGenerator map;
 
     void Start()
     {
         map = FindObjectOfType<MapGenerator>();
 
-        NextWave();
+        WaveStart();
     }
 
     void Update()
-    {     
+    {
         EnemySpawn();
     }
 
-    public void NextWave()
+
+    public void WaveStart()
     {
         curWaveNum++;
 
@@ -64,15 +72,22 @@ public class GameManager : MonoBehaviour
             currentWave = waves[curWaveNum - 1];
 
             RemainingSpawnEnemy = currentWave.enemyCount;
+            RemainingAliveEnemy = RemainingSpawnEnemy;
         }
-    }
+        else if (curWaveNum - 1 >= waves.Length)
+        {
+            RemainingSpawnBoss = currentWave.bossCount;
+            RemainingAliveBoss = RemainingSpawnBoss;
+
+            BossSpawn();
+        }
+    }    
 
     void EnemySpawn()
     {
         Transform randomTIle = map.GetRandomOpenTile();
 
-        // 소환될 적이 0보다 많고, 현재 시간이 다음 스폰 시간보다 크다면
-        if (RemainingSpawnEnemy > 0 && nextSpawnTime < Time.time)
+        if (RemainingSpawnEnemy > 0)
         {
             for (int i = 0; i < enemyPrefab.Length; i++)
             {
@@ -80,8 +95,45 @@ public class GameManager : MonoBehaviour
 
                 Enemy enemy = Instantiate(enemyPrefab[i], randomTIle.position, Quaternion.identity) as Enemy;
                 enemy.transform.parent = transform;
-                enemyList.Add(enemy);                
+                enemyList.Add(enemy);
+                enemy.OnDie += EnemyDie;
             }            
+        }
+    }
+
+    void BossSpawn()
+    {
+        Transform randomTIle = map.GetRandomOpenTile();
+
+        if (RemainingSpawnBoss > 0)
+        {
+            for (int i = 0; i < bossPrefab.Length; i++)
+            {
+                RemainingSpawnBoss--;
+
+                Enemy boss = Instantiate(bossPrefab[i], randomTIle.position, Quaternion.identity) as Enemy;
+                boss.transform.parent = transform;
+                enemyList.Add(boss);
+                boss.OnDie += BossDie;
+            }
+        }
+    }
+
+    void EnemyDie()
+    {        
+        RemainingAliveEnemy--;
+        if (RemainingAliveEnemy == 0)
+        {
+            Invoke("WaveStart", 1f);
+        }
+    }
+
+    void BossDie()
+    {
+        RemainingAliveBoss--;
+        if (RemainingAliveBoss == 0)
+        {
+            Debug.Log("클리어");
         }
     }
 }

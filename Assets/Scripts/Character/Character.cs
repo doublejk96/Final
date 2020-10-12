@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
+    public event System.Action OnDie;
+
     protected Animator anim;
 
     [Header("HP")]
@@ -83,7 +85,12 @@ public class Character : MonoBehaviour
         }
 
         if(gameObject.tag == "Enemy")
-        {          
+        {
+            if (OnDie != null)
+            {
+                OnDie();
+            }
+
             Enemy enemy = GetComponent<Enemy>();
             GameManager.Instance.enemyList.Remove(enemy);
 
