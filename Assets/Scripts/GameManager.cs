@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
     public Wave[] waves;
 
     Wave currentWave;
-    int curWaveNum;
+    public int curWaveNum;
 
     public List<Enemy> enemyList;   
     public List<Enemy> bossList;
