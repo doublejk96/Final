@@ -13,8 +13,6 @@ public class Bullet : MonoBehaviour
         rigid = GetComponent<Rigidbody>();
 
         rigid.AddForce(transform.forward * speed);
-
-        Destroy(gameObject, 10);
     }
 
     public virtual void OnCollisionEnter(Collision other)
