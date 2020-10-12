@@ -95,11 +95,13 @@ public class MapGenerator : MonoBehaviour
                 newObstacle.localScale = Vector3.one * (1 - outLine) * tileSize;
                 newObstacle.parent = mapHolder;
 
+                /*
                 Renderer obstacleRenderer = newObstacle.GetComponent<Renderer>();
                 Material obstacleMaterial = new Material(obstacleRenderer.sharedMaterial);
                 float ColorPercent = randomCoord.y / (float)curMap.mapSize.y;
                 obstacleMaterial.color = Color.Lerp(curMap.forwardColor, curMap.backColor, ColorPercent);
                 obstacleRenderer.sharedMaterial = obstacleMaterial;
+                */
 
                 allOpenCoords.Remove(randomCoord);
             }
