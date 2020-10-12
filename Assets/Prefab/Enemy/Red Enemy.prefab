@@ -716,7 +716,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ebb28edbbcd5d16458da44b2df0df400, type: 2}
+  - {fileID: 2100000, guid: d48454e4a02d5b8459283760ad8800f5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1134,7 +1134,7 @@ GameObject:
   - component: {fileID: 8198883013283402558}
   - component: {fileID: 7237816126637930528}
   m_Layer: 0
-  m_Name: Black Enemy
+  m_Name: Red Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1219,7 +1219,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   curHp: 0
-  maxHp: 5
+  maxHp: 1
   bulletPrefab: {fileID: 1189481227699301376, guid: 763d9a6262fa1fa429a81859beee96b9,
     type: 3}
   firePos: {fileID: 8198883013271419489}
@@ -1229,6 +1229,9 @@ MonoBehaviour:
   shotTime: 1
   nextShotTime: 2
   muzzleFire: {fileID: 2704108279400253983}
+  speed: 2
+  stopDis: 3
+  retreatDis: 1.5
   hitEffect: {fileID: 100000, guid: f06e78284f831ae469c74624ab5d513b, type: 3}
   dieEffect: {fileID: 100018, guid: a40b64bf23366dc42a892af2c6ff6140, type: 3}
 --- !u!195 &7237816126637930528
@@ -1240,9 +1243,9 @@ NavMeshAgent:
   m_GameObject: {fileID: 8198883013283402552}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 2.5
-  m_Acceleration: 8
+  m_Radius: 0.2
+  m_Speed: 2
+  m_Acceleration: 20
   avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 3

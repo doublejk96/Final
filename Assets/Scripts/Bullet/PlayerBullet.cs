@@ -4,16 +4,12 @@ using UnityEngine;
 
 public class PlayerBullet : Bullet
 {
-    private Enemy enemy;
-
     [Header("Damage")]
     public int damage;
 
     void Start()
     {
         Init();
-
-        enemy = FindObjectOfType<Enemy>();
     }
 
     public override void OnCollisionEnter(Collision other)
@@ -22,6 +18,7 @@ public class PlayerBullet : Bullet
 
         if (other.gameObject.tag == "Enemy")
         {
+            Enemy enemy = other.gameObject.GetComponent<Enemy>();
             enemy.OnDamage(damage);
 
             Destroy(gameObject);

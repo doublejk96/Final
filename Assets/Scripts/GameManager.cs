@@ -36,11 +36,11 @@ public class GameManager : MonoBehaviour
     Wave currentWave;
     int curWaveNum;
 
-    public List<Enemy> enemyList;
-    public Enemy[] enemyPrefab;
-
+    public List<Enemy> enemyList;   
     public List<Enemy> bossList;
-    public Enemy[] bossPrefab;
+
+    public List<GameObject> enemyPrefab;
+    public List<GameObject> bossPrefab;
 
     int RemainingSpawnEnemy;
     int RemainingAliveEnemy;
@@ -61,7 +61,6 @@ public class GameManager : MonoBehaviour
     {
         EnemySpawn();
     }
-
 
     public void WaveStart()
     {
@@ -89,16 +88,17 @@ public class GameManager : MonoBehaviour
 
         if (RemainingSpawnEnemy > 0)
         {
-            for (int i = 0; i < enemyPrefab.Length; i++)
-            {
-                RemainingSpawnEnemy--;
+            RemainingSpawnEnemy--;
 
-                Enemy enemy = Instantiate(enemyPrefab[i], randomTIle.position, Quaternion.identity) as Enemy;
-                enemy.transform.parent = transform;
-                enemyList.Add(enemy);
-                enemy.OnDie += EnemyDie;
-            }            
+            int i = Random.Range(0, enemyPrefab.Count);
+            GameObject enemyGo = Instantiate(enemyPrefab[i], randomTIle.position, Quaternion.identity);
+                
+            Enemy enemy = enemyGo.GetComponent<Enemy>();
+            enemy.transform.parent = transform;
+            enemyList.Add(enemy);
+            enemy.OnDie += EnemyDie;
         }
+        
     }
 
     void BossSpawn()
@@ -107,15 +107,17 @@ public class GameManager : MonoBehaviour
 
         if (RemainingSpawnBoss > 0)
         {
-            for (int i = 0; i < bossPrefab.Length; i++)
-            {
-                RemainingSpawnBoss--;
+            RemainingSpawnBoss--;
+            
+            int i = Random.Range(0, bossPrefab.Count);
 
-                Enemy boss = Instantiate(bossPrefab[i], randomTIle.position, Quaternion.identity) as Enemy;
-                boss.transform.parent = transform;
-                enemyList.Add(boss);
-                boss.OnDie += BossDie;
-            }
+            GameObject bossGo = Instantiate(bossPrefab[i], randomTIle.position, Quaternion.identity);
+            bossPrefab.RemoveAt(i);
+
+            Enemy boss = bossGo.GetComponent<Enemy>();
+            boss.transform.parent = transform;
+            bossList.Add(boss);
+            boss.OnDie += BossDie;
         }
     }
 

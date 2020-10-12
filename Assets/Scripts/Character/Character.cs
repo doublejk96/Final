@@ -27,7 +27,7 @@ public class Character : MonoBehaviour
     [Header("Effect")]
     public GameObject muzzleFire;
 
-    protected bool isDie;
+    protected bool isDie = false;
 
     public void Init()
     {
@@ -76,8 +76,6 @@ public class Character : MonoBehaviour
     public virtual void Die()
     {
         isDie = true;
-
-        anim.SetTrigger("isDie");
 
         if (gameObject.tag == "Player")
         {
