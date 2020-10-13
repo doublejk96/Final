@@ -25,19 +25,19 @@ public class Character : MonoBehaviour
         curHp = maxHp;
     }
 
-    void Update()
+    public virtual void Update()
     {
         attackTime -= Time.deltaTime;
     }
 
     public virtual void Attack()
-    {
-        if (attackTime <= 0)
+    {/*
+        if (0 <= attackTime && this is Player)
         {
-            anim.SetTrigger("isAttack");          
-            
-            attackTime = nextAttackTime;
-        }
+            Instantiate(bulletPrefab, firePos.position, firePos.rotation);
+            Instantiate(shellPrefab, shellPos.position, shellPos.rotation);
+            FireEffectOn();
+        }*/
     }    
 
     public virtual void OnDamage(float damage)

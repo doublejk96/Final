@@ -30,9 +30,11 @@ public class Player : Character
         Init();
     }
 
-    void Update()
+    public override void Update()
     {
-        FindEnemy();        
+        base.Update();
+
+        FindEnemy();
     }
 
     void FindEnemy()
@@ -74,8 +76,6 @@ public class Player : Character
     {
         base.Attack();
 
-        Instantiate(bulletPrefab, firePos.position, firePos.rotation);
-        Instantiate(shellPrefab, shellPos.position, shellPos.rotation);
         FireEffectOn();
     }
 
