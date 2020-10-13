@@ -22,8 +22,12 @@ public class Box : MonoBehaviour
 
     void ItemDrop()
     {
+        int r = Random.Range(0, 10);
         int i = Random.Range(0, itemPrefab.Count);
 
-        Instantiate(itemPrefab[i], transform.position, Quaternion.identity);
+        if (r <= 3)
+        {
+            Instantiate(itemPrefab[i], transform.position, Quaternion.identity);
+        }        
     }
 }
