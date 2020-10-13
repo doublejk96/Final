@@ -1472,6 +1472,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brokenEffect: {fileID: 7649564934542094434, guid: 3a77a8384e9213e4bb7c2e98e8d43195,
     type: 3}
+  itemPrefab: []
 --- !u!208 &81003092
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -1922,6 +1923,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brokenEffect: {fileID: 7649564934542094434, guid: 3a77a8384e9213e4bb7c2e98e8d43195,
     type: 3}
+  itemPrefab: []
 --- !u!208 &101810008
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -3385,6 +3387,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brokenEffect: {fileID: 7649564934542094434, guid: 3a77a8384e9213e4bb7c2e98e8d43195,
     type: 3}
+  itemPrefab: []
 --- !u!208 &209360227
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -3527,6 +3530,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brokenEffect: {fileID: 7649564934542094434, guid: 3a77a8384e9213e4bb7c2e98e8d43195,
     type: 3}
+  itemPrefab: []
 --- !u!208 &211089025
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -4095,6 +4099,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brokenEffect: {fileID: 7649564934542094434, guid: 3a77a8384e9213e4bb7c2e98e8d43195,
     type: 3}
+  itemPrefab: []
 --- !u!208 &235751435
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -4395,6 +4400,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brokenEffect: {fileID: 7649564934542094434, guid: 3a77a8384e9213e4bb7c2e98e8d43195,
     type: 3}
+  itemPrefab: []
 --- !u!208 &256800729
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -5121,6 +5127,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brokenEffect: {fileID: 7649564934542094434, guid: 3a77a8384e9213e4bb7c2e98e8d43195,
     type: 3}
+  itemPrefab: []
 --- !u!208 &284267158
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -5500,6 +5507,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brokenEffect: {fileID: 7649564934542094434, guid: 3a77a8384e9213e4bb7c2e98e8d43195,
     type: 3}
+  itemPrefab: []
 --- !u!208 &308549371
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -6305,6 +6313,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brokenEffect: {fileID: 7649564934542094434, guid: 3a77a8384e9213e4bb7c2e98e8d43195,
     type: 3}
+  itemPrefab: []
 --- !u!208 &352393198
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -6814,6 +6823,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brokenEffect: {fileID: 7649564934542094434, guid: 3a77a8384e9213e4bb7c2e98e8d43195,
     type: 3}
+  itemPrefab: []
 --- !u!208 &387895346
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -6956,6 +6966,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brokenEffect: {fileID: 7649564934542094434, guid: 3a77a8384e9213e4bb7c2e98e8d43195,
     type: 3}
+  itemPrefab: []
 --- !u!208 &396659068
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -7360,6 +7371,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brokenEffect: {fileID: 7649564934542094434, guid: 3a77a8384e9213e4bb7c2e98e8d43195,
     type: 3}
+  itemPrefab: []
 --- !u!208 &433951950
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -8256,6 +8268,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brokenEffect: {fileID: 7649564934542094434, guid: 3a77a8384e9213e4bb7c2e98e8d43195,
     type: 3}
+  itemPrefab: []
 --- !u!208 &477488952
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -9002,6 +9015,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brokenEffect: {fileID: 7649564934542094434, guid: 3a77a8384e9213e4bb7c2e98e8d43195,
     type: 3}
+  itemPrefab: []
 --- !u!208 &516335488
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -10058,6 +10072,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brokenEffect: {fileID: 7649564934542094434, guid: 3a77a8384e9213e4bb7c2e98e8d43195,
     type: 3}
+  itemPrefab: []
 --- !u!208 &549645455
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -10389,6 +10404,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brokenEffect: {fileID: 7649564934542094434, guid: 3a77a8384e9213e4bb7c2e98e8d43195,
     type: 3}
+  itemPrefab: []
 --- !u!208 &561667102
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -12445,6 +12461,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brokenEffect: {fileID: 7649564934542094434, guid: 3a77a8384e9213e4bb7c2e98e8d43195,
     type: 3}
+  itemPrefab: []
 --- !u!208 &706728526
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -13592,6 +13609,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brokenEffect: {fileID: 7649564934542094434, guid: 3a77a8384e9213e4bb7c2e98e8d43195,
     type: 3}
+  itemPrefab: []
 --- !u!208 &803551882
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -13813,6 +13831,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brokenEffect: {fileID: 7649564934542094434, guid: 3a77a8384e9213e4bb7c2e98e8d43195,
     type: 3}
+  itemPrefab: []
 --- !u!208 &814773285
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -14491,6 +14510,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brokenEffect: {fileID: 7649564934542094434, guid: 3a77a8384e9213e4bb7c2e98e8d43195,
     type: 3}
+  itemPrefab: []
 --- !u!208 &861918161
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -15349,6 +15369,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brokenEffect: {fileID: 7649564934542094434, guid: 3a77a8384e9213e4bb7c2e98e8d43195,
     type: 3}
+  itemPrefab: []
 --- !u!208 &921198959
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -15807,6 +15828,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brokenEffect: {fileID: 7649564934542094434, guid: 3a77a8384e9213e4bb7c2e98e8d43195,
     type: 3}
+  itemPrefab: []
 --- !u!208 &937984554
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -17025,6 +17047,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brokenEffect: {fileID: 7649564934542094434, guid: 3a77a8384e9213e4bb7c2e98e8d43195,
     type: 3}
+  itemPrefab: []
 --- !u!208 &1006654839
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -17167,6 +17190,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brokenEffect: {fileID: 7649564934542094434, guid: 3a77a8384e9213e4bb7c2e98e8d43195,
     type: 3}
+  itemPrefab: []
 --- !u!208 &1014657977
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -17467,6 +17491,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brokenEffect: {fileID: 7649564934542094434, guid: 3a77a8384e9213e4bb7c2e98e8d43195,
     type: 3}
+  itemPrefab: []
 --- !u!208 &1017864113
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -18318,6 +18343,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brokenEffect: {fileID: 7649564934542094434, guid: 3a77a8384e9213e4bb7c2e98e8d43195,
     type: 3}
+  itemPrefab: []
 --- !u!208 &1056115157
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -18460,6 +18486,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brokenEffect: {fileID: 7649564934542094434, guid: 3a77a8384e9213e4bb7c2e98e8d43195,
     type: 3}
+  itemPrefab: []
 --- !u!208 &1062719946
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -19961,6 +19988,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brokenEffect: {fileID: 7649564934542094434, guid: 3a77a8384e9213e4bb7c2e98e8d43195,
     type: 3}
+  itemPrefab: []
 --- !u!208 &1161464847
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -20402,6 +20430,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brokenEffect: {fileID: 7649564934542094434, guid: 3a77a8384e9213e4bb7c2e98e8d43195,
     type: 3}
+  itemPrefab: []
 --- !u!208 &1187549042
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -21017,6 +21046,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brokenEffect: {fileID: 7649564934542094434, guid: 3a77a8384e9213e4bb7c2e98e8d43195,
     type: 3}
+  itemPrefab: []
 --- !u!208 &1226213439
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -21159,6 +21189,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brokenEffect: {fileID: 7649564934542094434, guid: 3a77a8384e9213e4bb7c2e98e8d43195,
     type: 3}
+  itemPrefab: []
 --- !u!208 &1226361639
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -21696,6 +21727,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brokenEffect: {fileID: 7649564934542094434, guid: 3a77a8384e9213e4bb7c2e98e8d43195,
     type: 3}
+  itemPrefab: []
 --- !u!208 &1245542517
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -21838,6 +21870,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brokenEffect: {fileID: 7649564934542094434, guid: 3a77a8384e9213e4bb7c2e98e8d43195,
     type: 3}
+  itemPrefab: []
 --- !u!208 &1245687422
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -22722,6 +22755,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brokenEffect: {fileID: 7649564934542094434, guid: 3a77a8384e9213e4bb7c2e98e8d43195,
     type: 3}
+  itemPrefab: []
 --- !u!208 &1292426298
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -24160,6 +24194,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brokenEffect: {fileID: 7649564934542094434, guid: 3a77a8384e9213e4bb7c2e98e8d43195,
     type: 3}
+  itemPrefab: []
 --- !u!208 &1406914372
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -24886,6 +24921,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brokenEffect: {fileID: 7649564934542094434, guid: 3a77a8384e9213e4bb7c2e98e8d43195,
     type: 3}
+  itemPrefab: []
 --- !u!208 &1454159818
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -25138,6 +25174,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brokenEffect: {fileID: 7649564934542094434, guid: 3a77a8384e9213e4bb7c2e98e8d43195,
     type: 3}
+  itemPrefab: []
 --- !u!208 &1472317014
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -26965,6 +27002,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brokenEffect: {fileID: 7649564934542094434, guid: 3a77a8384e9213e4bb7c2e98e8d43195,
     type: 3}
+  itemPrefab: []
 --- !u!208 &1644460617
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -27418,6 +27456,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brokenEffect: {fileID: 7649564934542094434, guid: 3a77a8384e9213e4bb7c2e98e8d43195,
     type: 3}
+  itemPrefab: []
 --- !u!208 &1675929130
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -27850,6 +27889,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brokenEffect: {fileID: 7649564934542094434, guid: 3a77a8384e9213e4bb7c2e98e8d43195,
     type: 3}
+  itemPrefab: []
 --- !u!208 &1732029067
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -28181,6 +28221,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brokenEffect: {fileID: 7649564934542094434, guid: 3a77a8384e9213e4bb7c2e98e8d43195,
     type: 3}
+  itemPrefab: []
 --- !u!208 &1750221467
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -28586,6 +28627,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brokenEffect: {fileID: 7649564934542094434, guid: 3a77a8384e9213e4bb7c2e98e8d43195,
     type: 3}
+  itemPrefab: []
 --- !u!208 &1779501197
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -30307,6 +30349,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brokenEffect: {fileID: 7649564934542094434, guid: 3a77a8384e9213e4bb7c2e98e8d43195,
     type: 3}
+  itemPrefab: []
 --- !u!208 &1948847968
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -31126,6 +31169,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brokenEffect: {fileID: 7649564934542094434, guid: 3a77a8384e9213e4bb7c2e98e8d43195,
     type: 3}
+  itemPrefab: []
 --- !u!208 &1998991255
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -31268,6 +31312,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brokenEffect: {fileID: 7649564934542094434, guid: 3a77a8384e9213e4bb7c2e98e8d43195,
     type: 3}
+  itemPrefab: []
 --- !u!208 &2003236142
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -32166,6 +32211,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brokenEffect: {fileID: 7649564934542094434, guid: 3a77a8384e9213e4bb7c2e98e8d43195,
     type: 3}
+  itemPrefab: []
 --- !u!208 &2050870903
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -32551,6 +32597,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brokenEffect: {fileID: 7649564934542094434, guid: 3a77a8384e9213e4bb7c2e98e8d43195,
     type: 3}
+  itemPrefab: []
 --- !u!208 &2084114481
 NavMeshObstacle:
   m_ObjectHideFlags: 0

@@ -21,15 +21,16 @@ public class Bullet : MonoBehaviour
 
     public virtual void OnTriggerEnter(Collider other)
     {
-        rigid.useGravity = true;
-        Collider.isTrigger = false;
+        rigid.useGravity = true;        
 
         if (other.gameObject.tag == "Box")
         {
             Destroy(gameObject);
         }
         else if (other.gameObject.tag == "Obstacle")
-        {          
+        {
+            Collider.isTrigger = false;
+
             rigid.AddForce(transform.forward * -speed);
         }
     }

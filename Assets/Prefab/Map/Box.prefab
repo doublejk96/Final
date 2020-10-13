@@ -142,3 +142,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brokenEffect: {fileID: 7649564934542094434, guid: 3a77a8384e9213e4bb7c2e98e8d43195,
     type: 3}
+  itemPrefab:
+  - {fileID: 5242089461697757082, guid: 446351ff9e5051e45ac1cce2d01ba922, type: 3}
