@@ -32,8 +32,6 @@ public class Player : Character
 
     void Update()
     {
-        attackTime -= Time.deltaTime;
-
         FindEnemy();        
     }
 

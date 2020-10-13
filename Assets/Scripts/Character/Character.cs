@@ -12,7 +12,7 @@ public class Character : MonoBehaviour
     public float curHp;
     public float maxHp;    
 
-    [Header("Attack Rate")]
+    [Header("Attack Speed")]
     public float attackTime;
     public float nextAttackTime;    
 
@@ -25,17 +25,20 @@ public class Character : MonoBehaviour
         curHp = maxHp;
     }
 
+    void Update()
+    {
+        attackTime -= Time.deltaTime;
+    }
+
     public virtual void Attack()
     {
         if (attackTime <= 0)
         {
-            anim.SetTrigger("isFire");          
+            anim.SetTrigger("isAttack");          
             
             attackTime = nextAttackTime;
         }
-    }
-
-    
+    }    
 
     public virtual void OnDamage(float damage)
     {

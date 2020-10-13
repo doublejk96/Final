@@ -28886,5 +28886,15 @@ PrefabInstance:
       propertyPath: maxHp
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 1911875919042366198, guid: 8426729ec860793458bbde3c1f31a8c6,
+        type: 3}
+      propertyPath: attackTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1911875919042366198, guid: 8426729ec860793458bbde3c1f31a8c6,
+        type: 3}
+      propertyPath: nextAttackTime
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8426729ec860793458bbde3c1f31a8c6, type: 3}
