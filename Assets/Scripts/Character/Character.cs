@@ -10,22 +10,11 @@ public class Character : MonoBehaviour
 
     [Header("HP")]
     public float curHp;
-    public float maxHp;
+    public float maxHp;    
 
-    [Header("Bullet")]
-    public Transform bulletPrefab;
-    public Transform firePos;
-
-    [Header("Shell")]
-    public Transform shellPrefab;
-    public Transform shellPos;
-
-    [Header("Fire Rate")]
-    public float shotTime;
-    public float nextShotTime;
-
-    [Header("Effect")]
-    public GameObject muzzleFire;
+    [Header("Attack Rate")]
+    public float attackTime;
+    public float nextAttackTime;    
 
     protected bool isDie = false;
 
@@ -38,29 +27,15 @@ public class Character : MonoBehaviour
 
     public virtual void Attack()
     {
-        if (shotTime <= 0)
+        if (attackTime <= 0)
         {
-            anim.SetTrigger("isFire");
-
-            Instantiate(bulletPrefab, firePos.position, firePos.rotation);
-            Instantiate(shellPrefab, shellPos.position, shellPos.rotation);
-            FireEffectOn();
-
-            shotTime = nextShotTime;
+            anim.SetTrigger("isFire");          
+            
+            attackTime = nextAttackTime;
         }
     }
 
-    void FireEffectOn()
-    {
-        muzzleFire.SetActive(true);
-
-        Invoke("FireEffectOff", 0.05f);
-    }
-
-    void FireEffectOff()
-    {
-        muzzleFire.SetActive(false);
-    }
+    
 
     public virtual void OnDamage(float damage)
     {

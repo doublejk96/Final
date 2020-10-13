@@ -8,9 +8,18 @@ public class Player : Character
     private PlayerController playerCon;    
     private CameraOption cam;
 
+    [Header("Bullet")]
+    public Transform bulletPrefab;
+    public Transform firePos;
+
+    [Header("Shell")]
+    public Transform shellPrefab;
+    public Transform shellPos;
+
     [Header("Effect")]
     public Vector3 offset;       
     public GameObject hitEffect;
+    public GameObject muzzleFire;
 
     void Start()
     {
@@ -23,7 +32,7 @@ public class Player : Character
 
     void Update()
     {
-        shotTime -= Time.deltaTime;
+        attackTime -= Time.deltaTime;
 
         FindEnemy();        
     }
@@ -61,8 +70,29 @@ public class Player : Character
                 Attack();
             }
         }
-    }      
-        
+    }
+
+    public override void Attack()
+    {
+        base.Attack();
+
+        Instantiate(bulletPrefab, firePos.position, firePos.rotation);
+        Instantiate(shellPrefab, shellPos.position, shellPos.rotation);
+        FireEffectOn();
+    }
+
+    void FireEffectOn()
+    {
+        muzzleFire.SetActive(true);
+
+        Invoke("FireEffectOff", 0.05f);
+    }
+
+    void FireEffectOff()
+    {
+        muzzleFire.SetActive(false);
+    }
+
     public override void OnDamage(float damage)
     {
         base.OnDamage(damage);
