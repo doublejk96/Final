@@ -6,20 +6,11 @@ using UnityEngine;
 public class Player : Character
 {
     private PlayerController playerCon;    
-    private CameraOption cam;
-
-    [Header("Bullet")]
-    public Transform bulletPrefab;
-    public Transform firePos;
-
-    [Header("Shell")]
-    public Transform shellPrefab;
-    public Transform shellPos;
+    private CameraOption cam;    
 
     [Header("Effect")]
     public Vector3 offset;       
     public GameObject hitEffect;
-    public GameObject muzzleFire;
 
     void Start()
     {
@@ -30,9 +21,9 @@ public class Player : Character
         Init();
     }
 
-    public override void Update()
+    void Update()
     {
-        base.Update();
+        attackTime -= Time.deltaTime;
 
         FindEnemy();
     }
@@ -76,7 +67,17 @@ public class Player : Character
     {
         base.Attack();
 
-        FireEffectOn();
+        if (attackTime <= 0)
+        {
+            anim.SetTrigger("isAttack");
+
+            Instantiate(bulletPrefab, firePos.position, firePos.rotation);
+            Instantiate(shellPrefab, shellPos.position, shellPos.rotation);
+
+            FireEffectOn();
+
+            attackTime = nextAttackTime;
+        }
     }
 
     void FireEffectOn()

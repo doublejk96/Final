@@ -10,11 +10,22 @@ public class Character : MonoBehaviour
 
     [Header("HP")]
     public float curHp;
-    public float maxHp;    
+    public float maxHp;
+
+    [Header("Bullet")]
+    public Transform bulletPrefab;
+    public Transform firePos;
+
+    [Header("Shell")]
+    public Transform shellPrefab;
+    public Transform shellPos;
 
     [Header("Attack Speed")]
     public float attackTime;
-    public float nextAttackTime;    
+    public float nextAttackTime;
+
+    [Header("Effect")]
+    public GameObject muzzleFire;
 
     protected bool isDie = false;
 
@@ -25,20 +36,10 @@ public class Character : MonoBehaviour
         curHp = maxHp;
     }
 
-    public virtual void Update()
-    {
-        attackTime -= Time.deltaTime;
-    }
-
     public virtual void Attack()
-    {/*
-        if (0 <= attackTime && this is Player)
-        {
-            Instantiate(bulletPrefab, firePos.position, firePos.rotation);
-            Instantiate(shellPrefab, shellPos.position, shellPos.rotation);
-            FireEffectOn();
-        }*/
-    }    
+    {
+        
+    }
 
     public virtual void OnDamage(float damage)
     {
