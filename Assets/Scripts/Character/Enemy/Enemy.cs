@@ -45,18 +45,23 @@ public class Enemy : Character
         {
             StartCoroutine(UpdatePath());
         }
-        else if (dis < stopDis && dis > retreatDis)
+        else if (dis <= stopDis && dis > retreatDis)
         {
             anim.SetBool("isMove", false);
+            anim.SetBool("backWalk", false);
 
             transform.position = transform.position;
 
             Attack();
         }
-        else if (dis < retreatDis)
+        else if (dis <= retreatDis)
         {
+            anim.SetBool("backWalk", true);
+
             Vector3 back = Vector3.MoveTowards(transform.position, target.position, -speed * Time.deltaTime);
             transform.position = back;
+
+            Attack();
         }
         
     }
