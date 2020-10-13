@@ -19,8 +19,6 @@ public class Item : MonoBehaviour
             {
                 player.curHp += 1;
 
-                player.curHp = Mathf.Max(0, player.maxHp);
-
                 Destroy(gameObject);
             }                       
         }

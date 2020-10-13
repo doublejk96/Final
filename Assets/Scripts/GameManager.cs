@@ -70,7 +70,7 @@ public class GameManager : MonoBehaviour
             RemainingSpawnEnemy = currentWave.enemyCount;
             RemainingAliveEnemy = RemainingSpawnEnemy;
         }
-        else if (curWaveNum - 1 >= waves.Length)
+        else if (curWaveNum - 1 == waves.Length)
         {          
             BossSpawn();
         }
@@ -78,21 +78,41 @@ public class GameManager : MonoBehaviour
 
     void EnemySpawn()
     {
-        Transform randomTIle = map.GetRandomOpenTile();
-
         if (RemainingSpawnEnemy > 0)
         {
             RemainingSpawnEnemy--;
 
-            int i = Random.Range(0, enemyPrefab.Count);
-            GameObject enemyGo = Instantiate(enemyPrefab[i], randomTIle.position, Quaternion.identity);
-                
-            Enemy enemy = enemyGo.GetComponent<Enemy>();
-            enemy.transform.parent = transform;
-            enemyList.Add(enemy);
-            enemy.OnDie += EnemyDie;
+            StartCoroutine(SpawnEnemy());
+        }        
+    }
+
+    IEnumerator SpawnEnemy()
+    {
+        float spawnDelay = 1;
+        float tileFlashSpeed = 4;
+
+        Transform randomTile = map.GetRandomOpenTile();
+
+        Material tileMat = randomTile.GetComponent<Renderer>().material;
+        Color initialColor = tileMat.color;
+        Color flashColor = Color.red;
+        float spawnTimer = 0;
+
+        while (spawnTimer < spawnDelay)
+        {
+            tileMat.color = Color.Lerp(initialColor, flashColor, Mathf.PingPong(spawnTimer * tileFlashSpeed, 1));
+
+            spawnTimer += Time.deltaTime;
+            yield return null;
         }
-        
+
+        int i = Random.Range(0, enemyPrefab.Count);
+        GameObject enemyGo = Instantiate(enemyPrefab[i], randomTile.position, Quaternion.identity);
+
+        Enemy enemy = enemyGo.GetComponent<Enemy>();
+        enemy.transform.parent = transform;
+        enemyList.Add(enemy);
+        enemy.OnDie += EnemyDie;
     }
 
     void BossSpawn()

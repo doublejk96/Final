@@ -56,6 +56,7 @@ public class Enemy : Character
         }
         else if (dis <= retreatDis)
         {
+            anim.SetBool("isMove", false);
             anim.SetBool("backWalk", true);
 
             Vector3 back = Vector3.MoveTowards(transform.position, target.position, -speed * Time.deltaTime);
