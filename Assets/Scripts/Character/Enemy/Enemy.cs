@@ -28,8 +28,6 @@ public class Enemy : Character
 
     void Update()
     {      
-        shotTime -= Time.deltaTime;
-
         if (isDie == false)
         {
             transform.LookAt(target.transform);
@@ -51,8 +49,6 @@ public class Enemy : Character
             anim.SetBool("backWalk", false);
 
             transform.position = transform.position;
-
-            Attack();
         }
         else if (dis <= retreatDis)
         {
@@ -62,8 +58,6 @@ public class Enemy : Character
 
             Vector3 back = Vector3.MoveTowards(transform.position, target.position, -speed * Time.deltaTime);
             transform.position = back;
-
-            Attack();
         }
         
     }

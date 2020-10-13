@@ -16918,22 +16918,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waves:
-  - enemyCount: 1
+  - enemyCount: 5
     bossCount: 1
-  - enemyCount: 2
-    bossCount: 2
-  - enemyCount: 2
-    bossCount: 2
-  - enemyCount: 2
-    bossCount: 2
-  - enemyCount: 2
-    bossCount: 2
   curWaveNum: 0
   enemyList: []
   bossList: []
   enemyPrefab:
   - {fileID: 8198883013283402552, guid: 64f86b4209ecc1746b4086c77e2419ae, type: 3}
-  - {fileID: 8198883013283402552, guid: 83e3d6e3b94ce834b978bcd60cb89942, type: 3}
   bossPrefab:
   - {fileID: 8198883013283402552, guid: 98126cb66cc96d144baefda8f96d0d77, type: 3}
   - {fileID: 8198883013283402552, guid: b40bf6110638c23418c5cd87333c6316, type: 3}
