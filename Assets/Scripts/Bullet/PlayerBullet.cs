@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerBullet : Bullet
 {
+
     [Header("Damage")]
     public int damage;
 
@@ -12,9 +13,9 @@ public class PlayerBullet : Bullet
         Init();
     }
 
-    public override void OnCollisionEnter(Collision other)
+    public override void OnTriggerEnter(Collider other)
     {
-        base.OnCollisionEnter(other);
+        base.OnTriggerEnter(other);
 
         if (other.gameObject.tag == "Enemy")
         {

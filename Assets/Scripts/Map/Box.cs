@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class Box : MonoBehaviour
 {
-    private void OnCollisionEnter(Collision other)
+    public GameObject brokenEffect;
+
+    private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.GetComponent<Bullet>())
+        if (other.gameObject.tag == "Bullet")
         {
-            Destroy(gameObject);
+            Instantiate(brokenEffect, transform.position, Quaternion.identity);
+
+            Destroy(gameObject);            
         }
     }
 }

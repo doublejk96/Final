@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 1533116438689222170}
   - component: {fileID: 1533116438689222182}
   m_Layer: 0
-  m_Name: Navmesh Mask 1
-  m_TagString: Untagged
+  m_Name: Navmesh Mask
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

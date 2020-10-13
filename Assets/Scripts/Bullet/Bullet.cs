@@ -5,21 +5,32 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     private Rigidbody rigid;
+    private Collider Collider;
 
     public float speed;
 
     public virtual void Init()
     {
         rigid = GetComponent<Rigidbody>();
+        Collider = GetComponent<Collider>();
 
         rigid.AddForce(transform.forward * speed);
+
+        Destroy(gameObject, 10);
     }
 
-    public virtual void OnCollisionEnter(Collision other)
+    public virtual void OnTriggerEnter(Collider other)
     {
         rigid.useGravity = true;
-        rigid.AddForce(transform.forward * - speed / 10);
+        Collider.isTrigger = false;
 
-        Destroy(gameObject, 0.6f);
+        if (other.gameObject.tag == "Box")
+        {
+            Destroy(gameObject);
+        }
+        else if (other.gameObject.tag == "Obstacle")
+        {          
+            rigid.AddForce(transform.forward * -speed);
+        }
     }
 }

@@ -8,6 +8,8 @@ TagManager:
   - FxTemporaire
   - Room
   - Bullet
+  - Box
+  - Obstacle
   layers:
   - Default
   - TransparentFX
