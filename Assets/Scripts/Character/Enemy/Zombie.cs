@@ -4,6 +4,5 @@ using UnityEngine;
 
 public class Zombie : Enemy
 {
-    [Header("ATK")]
-    public float atk;        
+    
 }
