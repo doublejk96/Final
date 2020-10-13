@@ -6,5 +6,8 @@ using UnityEngine.AI;
 
 public class Enemy : Character
 {
-    
+    void Start()
+    {
+        Init();
+    }
 }
