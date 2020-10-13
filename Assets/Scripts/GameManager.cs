@@ -50,8 +50,6 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         map = FindObjectOfType<MapGenerator>();
-
-        WaveStart();
     }
 
     void Update()

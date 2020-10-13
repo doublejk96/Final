@@ -1230,8 +1230,8 @@ MonoBehaviour:
   nextShotTime: 2
   muzzleFire: {fileID: 2704108279400253983}
   speed: 2
-  stopDis: 3
-  retreatDis: 1.5
+  stopDis: 1.5
+  retreatDis: 1
   hitEffect: {fileID: 100000, guid: f06e78284f831ae469c74624ab5d513b, type: 3}
   dieEffect: {fileID: 100018, guid: a40b64bf23366dc42a892af2c6ff6140, type: 3}
 --- !u!195 &7237816126637930528

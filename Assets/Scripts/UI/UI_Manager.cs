@@ -5,8 +5,9 @@ using UnityEngine;
 public enum UI_State
 {
     Start = 0,
-    Play,
+    Play = 1,
     Pause,
+    End
 }
 
 public class UI_Manager : MonoBehaviour
@@ -34,7 +35,7 @@ public class UI_Manager : MonoBehaviour
 
     void Start()
     {
-        uiList = GetComponentsInChildren<UI_Base>();
+        uiList = GetComponentsInChildren<UI_Base>(true);
         foreach (UI_Base ui in uiList)
         {
 
