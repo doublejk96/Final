@@ -46,6 +46,7 @@ public class Rifle : Enemy
         {
             anim.SetBool("isMove", true);
             anim.SetBool("isBackmove", false);
+            anim.SetBool("Aiming", false);
 
             agent.isStopped = false;
 

@@ -15347,7 +15347,12 @@ PrefabInstance:
     - target: {fileID: 1087765577107970650, guid: 9615f0dbd23ff684da877e8b9ce77891,
         type: 3}
       propertyPath: attackRange
-      value: 4
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1087765577107970650, guid: 9615f0dbd23ff684da877e8b9ce77891,
+        type: 3}
+      propertyPath: moveRange
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1280018075018891336, guid: 9615f0dbd23ff684da877e8b9ce77891,
         type: 3}
@@ -15414,6 +15419,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1911875919042366199, guid: 9615f0dbd23ff684da877e8b9ce77891,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 8aa83beed659fd14f8d0f28f354f1db8, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9615f0dbd23ff684da877e8b9ce77891, type: 3}
 --- !u!1 &1523721434
