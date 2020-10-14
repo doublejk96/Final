@@ -728,7 +728,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   curHp: 0
-  maxHp: 2
+  maxHp: 3
   bulletPrefab: {fileID: 0}
   firePos: {fileID: 0}
   shellPrefab: {fileID: 0}

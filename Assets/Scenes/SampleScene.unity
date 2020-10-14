@@ -15409,6 +15409,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 1911875919042366194, guid: 9615f0dbd23ff684da877e8b9ce77891,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9615f0dbd23ff684da877e8b9ce77891, type: 3}
 --- !u!1 &1523721434
@@ -22026,12 +22031,12 @@ PrefabInstance:
     - target: {fileID: 1911875919042366198, guid: 8426729ec860793458bbde3c1f31a8c6,
         type: 3}
       propertyPath: attackTime
-      value: 999
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1911875919042366198, guid: 8426729ec860793458bbde3c1f31a8c6,
         type: 3}
       propertyPath: nextAttackTime
-      value: 999
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8426729ec860793458bbde3c1f31a8c6, type: 3}

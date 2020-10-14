@@ -76,8 +76,6 @@ public class Character : MonoBehaviour
 
             Enemy enemy = GetComponent<Enemy>();
             GameManager.Instance.enemyList.Remove(enemy);
-
-            Destroy(gameObject);
         }
     }
 }

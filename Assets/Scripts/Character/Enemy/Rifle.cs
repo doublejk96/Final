@@ -9,11 +9,7 @@ public class Rifle : Enemy
     public float moveRange;
     public float attackRange;
     public float retreatRange;
-
-    [Header("Effect")]
-    public GameObject hitEffect;
-    public GameObject dieEffect;
-
+        
     protected NavMeshAgent agent;
     protected Player player;
 
@@ -30,9 +26,12 @@ public class Rifle : Enemy
     {
         base.Update();
 
-        transform.LookAt(player.transform);
+        if(isDie != true)
+        {
+            transform.LookAt(player.transform);
 
-        Move();
+            Move();
+        }        
     }
 
     void Move()
@@ -97,5 +96,22 @@ public class Rifle : Enemy
     void FireEffectOff()
     {
         muzzleFire.SetActive(false);
+    }
+
+    public override void Die()
+    {
+        base.Die();
+
+        anim.SetTrigger("enemyDie");
+
+        agent.isStopped = true;
+
+        Invoke("DieEffect", 0.89f);
+    }
+
+    void DieEffect()
+    {
+        Instantiate(dieEffect, transform.position, Quaternion.identity);
+        Destroy(gameObject);
     }
 }
