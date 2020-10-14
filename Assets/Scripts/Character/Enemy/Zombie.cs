@@ -9,8 +9,8 @@ public class Zombie : Enemy
     public float atk;
 
     [Header("Sight")]
-    public float moveRange = 3f;
-    public float attackRange = 0.5f;
+    public float moveRange;
+    public float attackRange;
 
     [Header("Effect")]
     public GameObject hitEffect;
@@ -50,7 +50,7 @@ public class Zombie : Enemy
 
             agent.SetDestination(player.transform.position);
         }
-
+        
         if (dis <= attackRange)
         {
             if (attackTime <= 0)

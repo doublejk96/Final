@@ -6,8 +6,9 @@ using UnityEngine.AI;
 public class Rifle : Enemy
 {
     [Header("Sight")]
-    public float moveRange = 5f;
-    public float attackRange = 3f;
+    public float moveRange;
+    public float attackRange;
+    public float retreatRange;
 
     [Header("Effect")]
     public GameObject hitEffect;
@@ -39,11 +40,13 @@ public class Rifle : Enemy
         agent.isStopped = true;
         anim.SetBool("Aiming", false);
         anim.SetBool("isMove", false);
+        anim.SetBool("isBackMove", false);
 
         float dis = Vector3.Distance(player.transform.position, transform.position);
         if (dis <= moveRange)
         {
             anim.SetBool("isMove", true);
+            anim.SetBool("isBackmove", false);
 
             agent.isStopped = false;
 
@@ -54,8 +57,17 @@ public class Rifle : Enemy
         {
             anim.SetBool("Aiming", true);
             anim.SetBool("isMove", false);
+            anim.SetBool("isBackmove", false);
 
             Attack();
+        }
+
+        if (dis <= retreatRange)
+        {
+            anim.SetBool("isBackmove", true);
+            anim.SetBool("Aiming", false);
+
+            transform.position = Vector3.MoveTowards(transform.position, player.transform.position, -1.5f * Time.deltaTime);
         }
     }
 

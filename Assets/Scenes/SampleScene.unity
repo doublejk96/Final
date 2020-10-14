@@ -15339,6 +15339,16 @@ PrefabInstance:
       propertyPath: nextAttackTime
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1087765577107970650, guid: 9615f0dbd23ff684da877e8b9ce77891,
+        type: 3}
+      propertyPath: retreatRange
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1087765577107970650, guid: 9615f0dbd23ff684da877e8b9ce77891,
+        type: 3}
+      propertyPath: attackRange
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 1280018075018891336, guid: 9615f0dbd23ff684da877e8b9ce77891,
         type: 3}
       propertyPath: m_LocalPosition.x
