@@ -21,9 +21,9 @@ public class Player : Character
         Init();
     }
 
-    void Update()
+    public override void Update()
     {
-        attackTime -= Time.deltaTime;
+        base.Update();
 
         FindEnemy();
     }

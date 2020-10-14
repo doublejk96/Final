@@ -36,9 +36,16 @@ public class Character : MonoBehaviour
         curHp = maxHp;
     }
 
+    public virtual void Update()
+    {
+        attackTime -= Time.deltaTime;
+
+        attackTime = Mathf.Max(0, attackTime);
+    }
+
     public virtual void Attack()
     {
-        
+
     }
 
     public virtual void OnDamage(float damage)
