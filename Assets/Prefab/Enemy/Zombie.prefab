@@ -728,17 +728,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   curHp: 0
-  maxHp: 5
+  maxHp: 2
   bulletPrefab: {fileID: 0}
   firePos: {fileID: 0}
   shellPrefab: {fileID: 0}
   shellPos: {fileID: 0}
-  attackTime: 3
-  nextAttackTime: 3
+  attackTime: 2
+  nextAttackTime: 2
   muzzleFire: {fileID: 0}
   atk: 1
-  moveRange: 3
-  attackRange: 1
+  moveRange: 5
+  attackRange: 0.7
+  hitEffect: {fileID: 100000, guid: f06e78284f831ae469c74624ab5d513b, type: 3}
+  dieEffect: {fileID: 100018, guid: a40b64bf23366dc42a892af2c6ff6140, type: 3}
 --- !u!1 &8198883013294718372
 GameObject:
   m_ObjectHideFlags: 0

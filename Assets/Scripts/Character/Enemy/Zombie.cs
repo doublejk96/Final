@@ -12,6 +12,10 @@ public class Zombie : Enemy
     public float moveRange = 3f;
     public float attackRange = 0.5f;
 
+    [Header("Effect")]
+    public GameObject hitEffect;
+    public GameObject dieEffect;
+
     protected NavMeshAgent agent;
     protected Player player;
 
@@ -34,10 +38,15 @@ public class Zombie : Enemy
 
     void Move()
     {
+        agent.isStopped = true;
+        anim.SetBool("isMove", false);        
+
         float dis = Vector3.Distance(player.transform.position, transform.position);
         if (dis <= moveRange)
         {
             anim.SetBool("isMove", true);
+
+            agent.isStopped = false;
 
             agent.SetDestination(player.transform.position);
         }
@@ -80,5 +89,19 @@ public class Zombie : Enemy
             }
         }
         return false;
+    }
+
+    public override void OnDamage(float damage)
+    {
+        base.OnDamage(damage);
+
+        Instantiate(hitEffect, transform.position, Quaternion.identity);
+    }
+
+    public override void Die()
+    {
+        base.Die();
+
+        Instantiate(dieEffect, transform.position, Quaternion.identity);
     }
 }
