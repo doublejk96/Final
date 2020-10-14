@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class Player : Character
 {
+    public Camera mainCam;
+    public Camera dieCam;
+
     private PlayerController playerCon;    
     private CameraOption cam;    
 
@@ -25,7 +28,10 @@ public class Player : Character
     {
         base.Update();
 
-        FindEnemy();
+        if (isDie != true)
+        {
+            FindEnemy();
+        }
     }
 
     void FindEnemy()
@@ -102,5 +108,13 @@ public class Player : Character
 
         Vector3 effectPos = transform.position + offset;
         Instantiate(hitEffect, effectPos, Quaternion.identity);
+    }
+
+    public override void Die()
+    {
+        base.Die();
+
+        mainCam.enabled = false;
+        dieCam.enabled = true;
     }
 }

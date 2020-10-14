@@ -20,6 +20,11 @@ public class CameraOption : MonoBehaviour
 
     public void VibrateTime(float time, float amount)
     {
+        if (target == null)
+        {
+            return;
+        }
+
         ShakeTime = time;
         ShakeAmount = amount;
     }

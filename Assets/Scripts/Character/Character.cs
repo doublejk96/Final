@@ -65,6 +65,10 @@ public class Character : MonoBehaviour
         if (gameObject.tag == "Player")
         {
             UI_Manager.Instance.Show(UI_ID.GameOver, true);
+
+            anim.SetTrigger("isDie");
+
+            Time.timeScale = 0.1f;
         }
 
         if(gameObject.tag == "Enemy")
