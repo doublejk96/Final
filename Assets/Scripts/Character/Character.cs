@@ -39,7 +39,6 @@ public class Character : MonoBehaviour
     public virtual void Update()
     {
         attackTime -= Time.deltaTime;
-
         attackTime = Mathf.Max(0, attackTime);
     }
 
@@ -65,7 +64,7 @@ public class Character : MonoBehaviour
 
         if (gameObject.tag == "Player")
         {
-            
+            UI_Manager.Instance.Show(UI_ID.GameOver, true);
         }
 
         if(gameObject.tag == "Enemy")

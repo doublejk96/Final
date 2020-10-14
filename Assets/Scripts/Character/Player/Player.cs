@@ -48,7 +48,8 @@ public class Player : Character
         }
 
         if (closestEnemy == null)
-        {            
+        {
+            anim.SetBool("Aiming", false);
             return;
         }     
         else if (closestEnemy != null)
@@ -56,6 +57,7 @@ public class Player : Character
             if (playerCon.isMove == false)
             {
                 transform.LookAt(closestEnemy.transform);
+                anim.SetBool("Aiming", true);
                 Debug.DrawLine(transform.position, closestEnemy.transform.position);
 
                 Attack();

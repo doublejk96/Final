@@ -10,7 +10,7 @@ public class UI_Start : UI_Base
 
         if (button.name == "Start Button")
         {
-            UI_Manager.Instance.Show(UI_State.Play, true);
+            UI_Manager.Instance.Show(UI_ID.Play, true);
 
             GameManager.Instance.WaveStart();
         }

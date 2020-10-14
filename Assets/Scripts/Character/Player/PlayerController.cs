@@ -42,6 +42,7 @@ public class PlayerController : MonoBehaviour
         {
             isMove = true;
             anim.SetBool("isMove", true);
+            anim.SetBool("Aiming", false);
         }
     }
 }

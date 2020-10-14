@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum UI_State
+public enum UI_ID
 {
     Start = 0,
     Play = 1,
     Pause,
-    End
+    Clear,
+    GameOver
 }
 
 public class UI_Manager : MonoBehaviour
@@ -42,14 +43,14 @@ public class UI_Manager : MonoBehaviour
         }       
     }
 
-    public void Show(UI_State uiState, bool show)
+    public void Show(UI_ID uiId, bool show)
     {
         foreach (UI_Base ui in uiList)
         {
             ui.gameObject.SetActive(false);
         }
 
-        UI_Base uiBase = uiList[(int)uiState];
+        UI_Base uiBase = uiList[(int)uiId];
         uiBase.gameObject.SetActive(show);
     }
 }

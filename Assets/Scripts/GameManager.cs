@@ -70,7 +70,7 @@ public class GameManager : MonoBehaviour
         }
         else if (curWaveNum - 1 == waves.Length)
         {          
-            BossSpawn();
+            // BossSpawn();
         }
     }    
 
@@ -139,6 +139,6 @@ public class GameManager : MonoBehaviour
 
     void BossDie()
     {
-        Debug.Log("클리어");
+        UI_Manager.Instance.Show(UI_ID.Clear, true);
     }
 }
