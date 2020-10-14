@@ -774,7 +774,7 @@ GameObject:
   - component: {fileID: 1911875919042366199}
   - component: {fileID: 1087765577107970650}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Enemy Boss
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -869,10 +869,11 @@ MonoBehaviour:
   attackTime: 0
   nextAttackTime: 0
   muzzleFire: {fileID: 1605868434065170267}
-  moveRange: 5
-  attackRange: 3
   hitEffect: {fileID: 100000, guid: f06e78284f831ae469c74624ab5d513b, type: 3}
   dieEffect: {fileID: 100018, guid: a40b64bf23366dc42a892af2c6ff6140, type: 3}
+  moveRange: 15
+  attackRange: 3
+  retreatRange: 0
 --- !u!1 &2343099999170044648
 GameObject:
   m_ObjectHideFlags: 0

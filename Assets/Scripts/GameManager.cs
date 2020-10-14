@@ -70,7 +70,7 @@ public class GameManager : MonoBehaviour
         }
         else if (curWaveNum - 1 == waves.Length)
         {          
-            // BossSpawn();
+            BossSpawn();
         }
     }    
 
