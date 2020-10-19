@@ -859,7 +859,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   curHp: 0
-  maxHp: 3
+  maxHp: 5
   bulletPrefab: {fileID: 1189481227699301376, guid: 763d9a6262fa1fa429a81859beee96b9,
     type: 3}
   firePos: {fileID: 1605868435152181077}
@@ -867,7 +867,7 @@ MonoBehaviour:
     type: 3}
   shellPos: {fileID: 1605868434407036534}
   attackTime: 0
-  nextAttackTime: 0
+  nextAttackTime: 1
   muzzleFire: {fileID: 1605868434065170267}
   hitEffect: {fileID: 100000, guid: f06e78284f831ae469c74624ab5d513b, type: 3}
   dieEffect: {fileID: 100018, guid: a40b64bf23366dc42a892af2c6ff6140, type: 3}

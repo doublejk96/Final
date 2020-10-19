@@ -14,9 +14,9 @@ public class MapGenerator : MonoBehaviour
     public Transform tilePrefab;
     public Transform[] obstaclePrefab;
     public Transform navmeshMaskPrefab;
-    public Transform navmeshFloor;    
+    public Transform navmeshFloor;
 
-    [Range(0,1)]
+    [Range(0, 1)]
     public float outLine;
 
     public float tileSize;
@@ -207,7 +207,7 @@ public class MapGenerator : MonoBehaviour
             y = _y;
         }
 
-        public static bool operator == (Coord c1, Coord c2)
+        public static bool operator ==(Coord c1, Coord c2)
         {
             return c1.x == c2.x && c1.y == c2.y;
         }
@@ -216,13 +216,13 @@ public class MapGenerator : MonoBehaviour
         {
             return !(c1 == c2);
         }
-    }    
+    }
 
     [System.Serializable]
     public class Map
     {
         public Coord mapSize;
-        [Range(0,1)]
+        [Range(0, 1)]
         public float obstaclePercent;
 
         public int seed;
