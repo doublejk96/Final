@@ -1,120 +1,47 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Dynamic;
 using UnityEngine;
 
-public class Player : Character
+public class Player : MonoBehaviour
 {
-    public Camera mainCam;
-    public Camera dieCam;
-
-    private PlayerController playerCon;    
-    private CameraOption cam;    
-
-    [Header("Effect")]
-    public Vector3 offset;       
-    public GameObject hitEffect;
-
-    void Start()
+    #region Singleton
+    private static Player instance;
+    public static Player Ins
     {
-        playerCon = GetComponent<PlayerController>();
-        
-        cam = GameObject.FindWithTag("MainCamera").GetComponent<CameraOption>();
-
-        Init();
-    }
-
-    public override void Update()
-    {
-        base.Update();
-
-        if (isDie != true)
+        get
         {
-            FindEnemy();
-        }
-    }
-
-    void FindEnemy()
-    {
-        float disToClosestEnemy = Mathf.Infinity;
-        
-        Enemy closestEnemy = null;
-        Enemy[] enemies = GameObject.FindObjectsOfType<Enemy>();
-        foreach (Enemy currentEnemy in enemies)
-        {
-            if (currentEnemy.curHp > 0)
+            if (instance == null)
             {
-                float disToEnemy = (currentEnemy.transform.position - transform.position).sqrMagnitude;
-                if (disToEnemy < disToClosestEnemy)
+                instance = FindObjectOfType<Player>();
+
+                if (null == instance)
                 {
-                    disToClosestEnemy = disToEnemy;
-                    closestEnemy = currentEnemy;
+                    Debug.LogError("Player Not Found");
                 }
             }
-        }
-
-        if (closestEnemy == null)
-        {
-            anim.SetBool("Aiming", false);
-            return;
-        }     
-        else if (closestEnemy != null)
-        {
-            if (playerCon.isMove == false)
-            {
-                transform.LookAt(closestEnemy.transform);
-                anim.SetBool("Aiming", true);
-                Debug.DrawLine(transform.position, closestEnemy.transform.position);
-
-                Attack();
-            }
+            return instance;
         }
     }
+    #endregion 
 
-    public override void Attack()
+    private PlayerController controller;
+
+    [Header("Hp")]
+    public float curHp;
+    public float maxHp;
+
+    [Header("etc")]
+    public float MoveSpeed;
+
+    public void Init()
     {
-        base.Attack();
+        controller = GetComponent<PlayerController>();
 
-        if (attackTime <= 0)
-        {
-            anim.SetTrigger("isAttack");
-
-            Instantiate(bulletPrefab, firePos.position, firePos.rotation);
-            Instantiate(shellPrefab, shellPos.position, shellPos.rotation);
-
-            FireEffectOn();
-
-            attackTime = nextAttackTime;
-        }
+        RestPlayer();
     }
 
-    void FireEffectOn()
+    void RestPlayer()
     {
-        muzzleFire.SetActive(true);
-
-        Invoke("FireEffectOff", 0.05f);
-    }
-
-    void FireEffectOff()
-    {
-        muzzleFire.SetActive(false);
-    }
-
-    public override void OnDamage(float damage)
-    {
-        base.OnDamage(damage);
-
-        cam.VibrateTime(0.1f, 0.1f);
-
-        Vector3 effectPos = transform.position + offset;
-        Instantiate(hitEffect, effectPos, Quaternion.identity);
-    }
-
-    public override void Die()
-    {
-        base.Die();
-
-        mainCam.enabled = false;
-        dieCam.enabled = true;
+        curHp = maxHp;
     }
 }

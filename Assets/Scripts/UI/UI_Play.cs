@@ -3,18 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UI_Play : UI_Base
+public class UI_Play : MonoBehaviour
 {
-    public override void OnClick(GameObject button)
+    [Header("Hp")]
+    public GameObject hpBar;
+    public Image hpGauge;
+
+    void FixedUpdate()
     {
-        base.OnClick(button);
+        ResetGauge();
+    }
 
-        if (button.name == "Pause Button")
+    void ResetGauge()
+    {
+        float curHp = Player.Ins.curHp;
+        float maxHp = Player.Ins.maxHp;
+        hpGauge.fillAmount = Mathf.Lerp(hpGauge.fillAmount, curHp / maxHp, Time.deltaTime * 10);
+
+        if (curHp >= maxHp)
         {
-            Time.timeScale = 0;
-
-            UI_PauseMenu pauseMenu = GetComponentInChildren<UI_PauseMenu>(true);
-            pauseMenu.Show(true);
+            hpBar.SetActive(false);
+        }
+        else
+        {
+            hpBar.SetActive(true);
         }
     }
 }
