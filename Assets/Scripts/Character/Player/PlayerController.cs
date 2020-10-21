@@ -9,7 +9,6 @@ public class PlayerController : MonoBehaviour
     private FixedJoystick joystick;
 
     public bool isMove = false;
-    public bool isFire = false;
 
     void Start()
     {
@@ -20,8 +19,7 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         Move();
-
-        
+        Reload();        
     }    
 
     void Move()
@@ -48,14 +46,20 @@ public class PlayerController : MonoBehaviour
     }
 
     public void Attack()
-    {
+    {        
         if (isMove == false)
         {
             if (GunManager.Ins.fireTime <= 0)
             {
-                anim.SetTrigger("isFire");
+                if (GunManager.Ins.curAmmo > 0)
+                {
+                    GunManager.Ins.curAmmo--;
 
-                GunManager.Ins.fireTime = GunManager.Ins.attackDelay;
+                    anim.SetTrigger("isFire");
+
+                    float nextAttack = (GunManager.Ins.attackDelay / GunManager.Ins.attackSpeed);
+                    GunManager.Ins.fireTime = nextAttack;
+                }                
             }
         }
     }
@@ -65,5 +69,13 @@ public class PlayerController : MonoBehaviour
         GameObject bullet = GunManager.Ins.bulletPrefab;
         Transform firePos = GunManager.Ins.FirePos;
         Instantiate(bullet, firePos.position, firePos.rotation);        
+    }
+
+    void Reload()
+    {
+        if (GunManager.Ins.curAmmo == 0)
+        {
+            GunManager.Ins.curAmmo = GunManager.Ins.maxAmmo;
+        }
     }
 }

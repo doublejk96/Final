@@ -22,10 +22,5 @@ public class GameManager : MonoBehaviour
             return instance;
         }
     }
-    #endregion
-
-    void Start()
-    {
-        Player.Ins.Init();
-    }    
+    #endregion   
 }

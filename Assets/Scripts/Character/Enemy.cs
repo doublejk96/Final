@@ -4,26 +4,6 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    #region Singleton
-    private static Enemy instance;
-    public static Enemy Ins
-    {
-        get
-        {
-            if (instance == null)
-            {
-                instance = FindObjectOfType<Enemy>();
-
-                if (null == instance)
-                {
-                    Debug.LogError("Enemy Not Found");
-                }
-            }
-            return instance;
-        }
-    }
-    #endregion
-
     [Header("Hp")]
     public float curHp;
     public float maxHp;

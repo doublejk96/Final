@@ -25,6 +25,7 @@ public class Player : MonoBehaviour
     #endregion 
 
     private PlayerController controller;
+    private Animator anim;
 
     [Header("Hp")]
     public float curHp;
@@ -33,9 +34,10 @@ public class Player : MonoBehaviour
     [Header("etc")]
     public float MoveSpeed;
 
-    public void Init()
+    void Start()
     {
         controller = GetComponent<PlayerController>();
+        anim = GetComponent<Animator>();
 
         RestPlayer();
     }
@@ -43,11 +45,15 @@ public class Player : MonoBehaviour
     void Update()
     {
         FindEnemy();
+
+        anim.SetFloat("AttackSpeed", GunManager.Ins.attackSpeed);
     }
 
     void RestPlayer()
     {
         curHp = maxHp;
+
+
     }
 
     void FindEnemy()
@@ -82,5 +88,5 @@ public class Player : MonoBehaviour
         {
             return;
         }       
-    }
+    }    
 }

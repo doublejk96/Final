@@ -17,10 +17,12 @@ public class Bullet : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        float damage = GunManager.Ins.damage;
+
         if (other.gameObject.tag == "Enemy")
         {
             Enemy enemy = other.gameObject.GetComponent<Enemy>();
-            enemy.OnDamage(GunManager.Ins.damage);
+            enemy.OnDamage(damage);
 
             Destroy(gameObject);
         }
