@@ -40,8 +40,47 @@ public class Player : MonoBehaviour
         RestPlayer();
     }
 
+    void Update()
+    {
+        FindEnemy();
+    }
+
     void RestPlayer()
     {
         curHp = maxHp;
+    }
+
+    void FindEnemy()
+    {
+        float disToClosestEnemy = Mathf.Infinity;
+
+        Enemy closestEnemy = null;
+        Enemy[] enemies = GameObject.FindObjectsOfType<Enemy>();
+        foreach (Enemy curEnemy in enemies)
+        {
+            if (curEnemy.curHp > 0)
+            {
+                float disToCurEnemy = (curEnemy.transform.position - transform.position).sqrMagnitude;
+                if (disToCurEnemy < disToClosestEnemy)
+                {
+                    disToClosestEnemy = disToCurEnemy;
+                    closestEnemy = curEnemy;
+                }
+            }
+        }
+
+        if (controller.isMove == false)
+        {
+            if (closestEnemy != null)
+            {             
+                transform.LookAt(closestEnemy.transform);
+
+                controller.Attack();
+            }
+        }        
+        else if (closestEnemy == null)
+        {
+            return;
+        }       
     }
 }

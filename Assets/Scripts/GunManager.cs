@@ -27,8 +27,9 @@ public class GunManager : MonoBehaviour
     public Transform FirePos;
     public GameObject bulletPrefab;
 
-    [Header("Bullet Speed")]
-    public float bulletPower;
+    [Header("Bullet Power")]
+    public float damage;
+    public float speed;
 
     [Header("Fire Rate")]
     public float fireTime;

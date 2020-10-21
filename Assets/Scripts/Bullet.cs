@@ -9,21 +9,23 @@ public class Bullet : MonoBehaviour
         
     void Start()
     {
-        float power = GunManager.Ins.bulletPower;
-
         rigid = GetComponent<Rigidbody>();
         bulletCollider = GetComponent<Collider>();
 
-        rigid.AddForce(transform.forward * power);
+        rigid.AddForce(transform.forward * GunManager.Ins.speed);
     }
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject)
+        if (other.gameObject.tag == "Enemy")
         {
             rigid.useGravity = true;
+            bulletCollider.isTrigger = false;
 
-            Destroy(gameObject);
+            Enemy enemy = FindObjectOfType<Enemy>();
+            enemy.OnDamage(GunManager.Ins.damage);
+
+            Destroy(gameObject, 10);
         }
     }
 }

@@ -33,7 +33,7 @@ public class MapGenerator : MonoBehaviour
                 Vector3 newTilePos = new Vector3(-mapSize.x / 2f + 0.5f + x, 0, -mapSize.y / 2 + 0.5f + y);
                 Transform newTile = Instantiate(tilePrefab, newTilePos, Quaternion.Euler(Vector3.right * 90)) as Transform;
                 newTile.parent = mapHolder;
-                newTile.localScale = Vector3.one * (1 - outLinePercent);
+                newTile.localScale = Vector3.one;
             }
         }
     }

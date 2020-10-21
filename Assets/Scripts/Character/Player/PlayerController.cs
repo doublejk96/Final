@@ -8,7 +8,8 @@ public class PlayerController : MonoBehaviour
     private Animator anim;
     private FixedJoystick joystick;
 
-    public bool isMove = false;    
+    public bool isMove = false;
+    public bool isFire = false;
 
     void Start()
     {
@@ -20,16 +21,7 @@ public class PlayerController : MonoBehaviour
     {
         Move();
 
-        float nextFireTime = GunManager.Ins.attackDelay;
-        if (isMove == false)
-        {
-            if (GunManager.Ins.fireTime <= 0)
-            {
-                anim.SetTrigger("isFire");
-
-                GunManager.Ins.fireTime = nextFireTime;
-            }            
-        }
+        
     }    
 
     void Move()
@@ -38,6 +30,7 @@ public class PlayerController : MonoBehaviour
         float z = joystick.Vertical;
 
         float speed = Player.Ins.MoveSpeed;
+        Vector3 velocity = new Vector3(x, 0, z) * speed * Time.deltaTime;
 
         if (x == 0 && z == 0)
         {
@@ -48,15 +41,26 @@ public class PlayerController : MonoBehaviour
         {
             isMove = true;
             anim.SetBool("isRun", true);
+
+            transform.position += velocity;
+            transform.LookAt(transform.position + velocity);
         }
-
-        Vector3 velocity = new Vector3(x, 0, z) * speed * Time.deltaTime;
-
-        transform.position += velocity;
-        transform.LookAt(transform.position + velocity);
     }
 
     public void Attack()
+    {
+        if (isMove == false)
+        {
+            if (GunManager.Ins.fireTime <= 0)
+            {
+                anim.SetTrigger("isFire");
+
+                GunManager.Ins.fireTime = GunManager.Ins.attackDelay;
+            }
+        }
+    }
+
+    void Fire()
     {
         GameObject bullet = GunManager.Ins.bulletPrefab;
         Transform firePos = GunManager.Ins.FirePos;
