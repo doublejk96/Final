@@ -19,13 +19,10 @@ public class Bullet : MonoBehaviour
     {
         if (other.gameObject.tag == "Enemy")
         {
-            rigid.useGravity = true;
-            bulletCollider.isTrigger = false;
-
-            Enemy enemy = FindObjectOfType<Enemy>();
+            Enemy enemy = other.gameObject.GetComponent<Enemy>();
             enemy.OnDamage(GunManager.Ins.damage);
 
-            Destroy(gameObject, 10);
+            Destroy(gameObject);
         }
     }
 }

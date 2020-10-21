@@ -51,6 +51,9 @@ public class Enemy : MonoBehaviour
 
     void Die()
     {
-        Destroy(gameObject);
+        SpawnManager spawn = transform.parent.GetComponent<SpawnManager>();
+        spawn.enemyList.Remove(this);
+
+        Destroy(gameObject);        
     }
 }

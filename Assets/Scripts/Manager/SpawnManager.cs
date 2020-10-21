@@ -2,39 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class SpawnManager : MonoBehaviour
 {
-    #region Singleton
-    private static GameManager instance;
-    public static GameManager Ins
-    {
-        get
-        {
-            if (instance == null)
-            {
-                instance = FindObjectOfType<GameManager>();
-
-                if (null == instance)
-                {
-                    Debug.LogError("GameManager Not Found");
-                }
-            }
-            return instance;
-        }
-    }
-    #endregion
-
     [Header("Enemy")]
     public List<GameObject> enemies;
 
     [Header("Spawn Enemy")]
     public List<Enemy> enemyList;
     public float enemyCount;
-
-    void Start()
-    {
-        Player.Ins.Init();
-    }
 
     void Update()
     {
@@ -52,6 +27,6 @@ public class GameManager : MonoBehaviour
             Enemy enemy = enemyGo.GetComponent<Enemy>();
             enemy.transform.parent = transform;
             enemyList.Add(enemy);
-        }        
+        }
     }
 }
