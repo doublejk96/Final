@@ -57,8 +57,6 @@ public class Player : MonoBehaviour
     void RestPlayer()
     {
         curHp = maxHp;
-
-
     }
 
     void FindEnemy()

@@ -16,7 +16,7 @@ public class Box : MonoBehaviour
 
             int r = Random.Range(0, 100);
             int i = Random.Range(0, itemPrefab.Count);
-            if (r <= 50)
+            if (r <= 30)
             {
                 Instantiate(itemPrefab[i], transform.position, transform.rotation);
             }
