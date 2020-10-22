@@ -18,7 +18,8 @@ public class RandomItem : MonoBehaviour
             // 데미지
             if (Player.Ins.curHp > 1)
             {
-                Player.Ins.curHp--;
+                float damage = Random.Range(1, Player.Ins.curHp - 1);
+                Player.Ins.curHp -= damage;
             }
             
             // 체력 증가
