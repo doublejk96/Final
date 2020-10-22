@@ -15,7 +15,7 @@ public class Bullet : MonoBehaviour
         rigid.AddForce(transform.forward * GunManager.Ins.speed);
     }
 
-    void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         float damage = GunManager.Ins.damage;
 
@@ -24,6 +24,10 @@ public class Bullet : MonoBehaviour
             Enemy enemy = other.gameObject.GetComponent<Enemy>();
             enemy.OnDamage(damage);
 
+            Destroy(gameObject);
+        }
+        else
+        {
             Destroy(gameObject);
         }
     }
