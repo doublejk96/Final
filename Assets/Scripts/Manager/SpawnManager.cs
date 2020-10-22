@@ -1,19 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.WSA.Input;
 
 public class SpawnManager : MonoBehaviour
 {
+    private MapGenerator map;
+
     [Header("Enemy")]
     public List<GameObject> enemies;
 
     [Header("Spawn Enemy")]
     public List<Enemy> enemyList;
 
-    [Header("Spawn Transform")]
-    public List<Transform> transformList;
-
     public int enemyCount;
+
+    void Start()
+    {
+        map = FindObjectOfType<MapGenerator>();
+    }
 
     void Update()
     {
@@ -24,14 +29,18 @@ public class SpawnManager : MonoBehaviour
     {
         if (enemyCount > 0)
         {
-            enemyCount--;
-
-            int randomEnemy = Random.Range(0, enemies.Count);
-            int radnomTransform = Random.Range(0, transformList.Count);
-            GameObject enemyGo = Instantiate(enemies[randomEnemy], transformList[radnomTransform].position, Quaternion.identity);
-            Enemy enemy = enemyGo.GetComponent<Enemy>();
-            enemy.transform.parent = transform;
-            enemyList.Add(enemy);
+            SpawnEnemy();
         }
+    }
+
+    void SpawnEnemy()
+    {
+        enemyCount--;
+        Transform randomTile = map.GetRandomOpenTile();        
+        int randomEnemy = Random.Range(0, enemies.Count);
+        GameObject enemyGo = Instantiate(enemies[randomEnemy], randomTile.position, Quaternion.identity);
+        Enemy enemy = enemyGo.GetComponent<Enemy>();
+        enemy.transform.parent = transform;
+        enemyList.Add(enemy);       
     }
 }
