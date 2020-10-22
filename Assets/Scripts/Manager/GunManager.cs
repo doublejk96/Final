@@ -24,8 +24,11 @@ public class GunManager : MonoBehaviour
     }
     #endregion
 
-    public Transform FirePos;
+    public Transform FirePos;    
     public GameObject bulletPrefab;
+
+    public Transform shellPos;
+    public GameObject shellPrefab;
 
     [Header("Bullet Power")]
     public float damage;

@@ -14,7 +14,7 @@ public class MapGenerator : MonoBehaviour
     public void GenerateMap()
     {
         // 콜라이더 생성
-        GetComponent<BoxCollider>().size = new Vector3(mapSize.x, 0.1f, mapSize.y);
+        GetComponent<BoxCollider>().size = new Vector3(mapSize.x, 0.05f, mapSize.y);
 
         string parentName = "Generate Map";
 

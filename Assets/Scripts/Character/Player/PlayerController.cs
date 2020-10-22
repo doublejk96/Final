@@ -71,6 +71,10 @@ public class PlayerController : MonoBehaviour
         GameObject bullet = GunManager.Ins.bulletPrefab;
         Transform firePos = GunManager.Ins.FirePos;
         Instantiate(bullet, firePos.position, firePos.rotation);
+
+        GameObject shell = GunManager.Ins.shellPrefab;
+        Transform shellPos = GunManager.Ins.shellPos;
+        Instantiate(shell, shellPos.position, shellPos.rotation);
     }
 
     void ReloadAnim()
