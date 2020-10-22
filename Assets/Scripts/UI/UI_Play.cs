@@ -13,7 +13,7 @@ public class UI_Play : MonoBehaviour
 
     [Header("Ammo")]
     public GameObject ammoBar;
-    public Image ammoGauge;
+    public Text ammoText;
 
     void FixedUpdate()
     {
@@ -39,15 +39,15 @@ public class UI_Play : MonoBehaviour
         // 총알
         float curAmmo = GunManager.Ins.curAmmo;
         float maxAmmo = GunManager.Ins.maxAmmo;
-        ammoGauge.fillAmount = Mathf.Lerp(ammoGauge.fillAmount, curAmmo / maxAmmo, Time.deltaTime * 20);
+        ammoText.text = curAmmo.ToString();
 
-        if (curAmmo <= 1)
+        if (curAmmo <= maxAmmo * 0.2f)
         {
-            ammoGauge.GetComponent<Image>().color = Color.red;
+            ammoText.GetComponent<Text>().color = Color.red;
         }
         else
         {
-            ammoGauge.GetComponent<Image>().color = Color.white;
+            ammoText.GetComponent<Text>().color = Color.white;
         }
     }
 }

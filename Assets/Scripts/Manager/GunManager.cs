@@ -35,9 +35,6 @@ public class GunManager : MonoBehaviour
     public float fireTime;
     public float smgAttackDelay;
 
-    [Header("Reload")]
-    public float smgReladTime;
-
     [Header("Ammo")]
     public float curAmmo;
     public float maxAmmo;

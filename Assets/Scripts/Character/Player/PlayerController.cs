@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Assertions.Must;
 
 public class PlayerController : MonoBehaviour
 {
@@ -20,7 +21,7 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         Move();
-        StartCoroutine(Reload());
+        ReloadAnim();
     }    
 
     void Move()
@@ -69,27 +70,24 @@ public class PlayerController : MonoBehaviour
 
         GameObject bullet = GunManager.Ins.bulletPrefab;
         Transform firePos = GunManager.Ins.FirePos;
-        Instantiate(bullet, firePos.position, firePos.rotation);        
+        Instantiate(bullet, firePos.position, firePos.rotation);
     }
 
-    IEnumerator Reload()
+    void ReloadAnim()
     {
         if (isReload == false)
         {
             if (GunManager.Ins.curAmmo == 0)
             {
-                if (isReload == false)
-                {
-                    isReload = true;
-                    anim.SetTrigger("isReload");
-
-                    float reload = (GunManager.Ins.smgReladTime / Player.Ins.reloadSpeed);
-                    yield return new WaitForSeconds(reload);
-
-                    isReload = false;
-                    GunManager.Ins.curAmmo = GunManager.Ins.maxAmmo;
-                }
+                isReload = true;
+                anim.SetTrigger("isReload");
             }
         }        
+    }
+
+    void Reload()
+    {
+        isReload = false;
+        GunManager.Ins.curAmmo = GunManager.Ins.maxAmmo;
     }
 }
