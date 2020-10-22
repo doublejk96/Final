@@ -6,6 +6,11 @@ public class Bullet : MonoBehaviour
 {  
     private Rigidbody rigid;
     private Collider bulletCollider;
+
+    [Header("Effect")]
+    public GameObject hitEffect;
+    public GameObject wallEffect;
+    public GameObject boxEffect;
         
     void Start()
     {
@@ -24,10 +29,20 @@ public class Bullet : MonoBehaviour
             Enemy enemy = other.gameObject.GetComponent<Enemy>();
             enemy.OnDamage(damage);
 
+            Instantiate(hitEffect, transform.position, Quaternion.identity);
+
+            Destroy(gameObject);
+        }
+        else if (other.gameObject.tag == "Box")
+        {
+            Instantiate(boxEffect, transform.position, Quaternion.identity);
+
             Destroy(gameObject);
         }
         else
         {
+            Instantiate(wallEffect, transform.position, Quaternion.identity);
+
             Destroy(gameObject);
         }
     }
