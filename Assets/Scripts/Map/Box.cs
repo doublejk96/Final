@@ -14,8 +14,13 @@ public class Box : MonoBehaviour
         {
             Instantiate(destoryEffect, transform.position, Quaternion.identity);
 
+            int r = Random.Range(0, 100);
             int i = Random.Range(0, itemPrefab.Count);
-            Instantiate(itemPrefab[i], transform.position, transform.rotation);
+            if (r <= 50)
+            {
+                Instantiate(itemPrefab[i], transform.position, transform.rotation);
+            }
+            
 
             Destroy(gameObject);
         }
