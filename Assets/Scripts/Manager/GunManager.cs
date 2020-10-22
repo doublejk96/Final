@@ -33,8 +33,10 @@ public class GunManager : MonoBehaviour
 
     [Header("Fire Rate")]
     public float fireTime;
-    public float attackDelay = 1f;
-    public float attackSpeed;
+    public float smgAttackDelay;
+
+    [Header("Reload")]
+    public float smgReladTime;
 
     [Header("Ammo")]
     public float curAmmo;
@@ -42,7 +44,7 @@ public class GunManager : MonoBehaviour
 
     void Start()
     {
-        fireTime = attackDelay / attackSpeed;
+        fireTime = smgAttackDelay / Player.Ins.attackSpeed;
         curAmmo = maxAmmo;
     }
 

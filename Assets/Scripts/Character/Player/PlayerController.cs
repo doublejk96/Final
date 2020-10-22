@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     private FixedJoystick joystick;
 
     public bool isMove = false;
+    public bool isReload = false;
 
     void Start()
     {
@@ -19,7 +20,7 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         Move();
-        Reload();        
+        StartCoroutine(Reload());
     }    
 
     void Move()
@@ -48,34 +49,47 @@ public class PlayerController : MonoBehaviour
     public void Attack()
     {        
         if (isMove == false)
-        {
+        {           
             if (GunManager.Ins.fireTime <= 0)
             {
                 if (GunManager.Ins.curAmmo > 0)
-                {
-                    GunManager.Ins.curAmmo--;
-
+                {               
                     anim.SetTrigger("isFire");
 
-                    float nextAttack = (GunManager.Ins.attackDelay / GunManager.Ins.attackSpeed);
+                    float nextAttack = (GunManager.Ins.smgAttackDelay / Player.Ins.attackSpeed);
                     GunManager.Ins.fireTime = nextAttack;
-                }                
-            }
+                }
+            }                    
         }
     }
 
     void Fire()
     {
+        GunManager.Ins.curAmmo--;
+
         GameObject bullet = GunManager.Ins.bulletPrefab;
         Transform firePos = GunManager.Ins.FirePos;
         Instantiate(bullet, firePos.position, firePos.rotation);        
     }
 
-    void Reload()
+    IEnumerator Reload()
     {
-        if (GunManager.Ins.curAmmo == 0)
+        if (isReload == false)
         {
-            GunManager.Ins.curAmmo = GunManager.Ins.maxAmmo;
-        }
+            if (GunManager.Ins.curAmmo == 0)
+            {
+                if (isReload == false)
+                {
+                    isReload = true;
+                    anim.SetTrigger("isReload");
+
+                    float reload = (GunManager.Ins.smgReladTime / Player.Ins.reloadSpeed);
+                    yield return new WaitForSeconds(reload);
+
+                    isReload = false;
+                    GunManager.Ins.curAmmo = GunManager.Ins.maxAmmo;
+                }
+            }
+        }        
     }
 }

@@ -31,6 +31,10 @@ public class Player : MonoBehaviour
     public float curHp;
     public float maxHp;
 
+    [Header("Speed")]
+    public float attackSpeed;
+    public float reloadSpeed;
+
     [Header("etc")]
     public float MoveSpeed;
 
@@ -46,7 +50,8 @@ public class Player : MonoBehaviour
     {
         FindEnemy();
 
-        anim.SetFloat("AttackSpeed", GunManager.Ins.attackSpeed);
+        anim.SetFloat("AttackSpeed", attackSpeed);
+        anim.SetFloat("ReloadSpeed", reloadSpeed);
     }
 
     void RestPlayer()

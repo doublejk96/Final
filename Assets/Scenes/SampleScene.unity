@@ -8391,10 +8391,10 @@ MonoBehaviour:
   damage: 1
   speed: 300
   fireTime: 0
-  attackDelay: 1
-  attackSpeed: 1
+  smgAttackDelay: 1
+  smgReladTime: 1
   curAmmo: 0
-  maxAmmo: 10
+  maxAmmo: 3
 --- !u!1 &1773599551
 GameObject:
   m_ObjectHideFlags: 0
@@ -9580,6 +9580,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isMove: 0
+  isReload: 0
 --- !u!114 &919132149192524910
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9594,6 +9595,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   curHp: 0
   maxHp: 5
+  attackSpeed: 1
+  reloadSpeed: 1
   MoveSpeed: 4
 --- !u!95 &919132149192524911
 Animator:
