@@ -4,21 +4,23 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    [Header("Script")]
+    public Animator anim;
+    public Player player;
+
     [Header("Hp")]
     public float curHp;
     public float maxHp;
 
     public void Start()
     {
-        ResetEnemy();
-    }
+        anim = GetComponent<Animator>();
+        player = FindObjectOfType<Player>();
 
-    void ResetEnemy()
-    {
         curHp = maxHp;
     }
 
-    public void OnDamage(float damage)
+    public virtual void OnDamage(float damage)
     {
         curHp--;
         curHp = Mathf.Max(0, curHp);
@@ -29,11 +31,9 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    void Die()
-    {
-        SpawnManager spawn = transform.parent.GetComponent<SpawnManager>();
-        spawn.enemyList.Remove(this);
-
-        Destroy(gameObject);        
+    public virtual void Die()
+    {       
+       // SpawnManager spawn = transform.parent.GetComponent<SpawnManager>();
+       // spawn.enemyList.Remove(this);
     }
 }

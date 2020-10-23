@@ -23,4 +23,9 @@ public class GameManager : MonoBehaviour
         }
     }
     #endregion   
+
+    void Start()
+    {
+        Player.Ins.RestPlayer();
+    }
 }

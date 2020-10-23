@@ -5,17 +5,16 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {  
     private Rigidbody rigid;
-    private Collider bulletCollider;
+    private Collider col;
 
     [Header("Effect")]
-    public GameObject hitEffect;
     public GameObject wallEffect;
     public GameObject boxEffect;
         
     void Start()
     {
         rigid = GetComponent<Rigidbody>();
-        bulletCollider = GetComponent<Collider>();
+        col = GetComponent<Collider>();
 
         rigid.AddForce(transform.forward * GunManager.Ins.speed);
     }
@@ -28,8 +27,6 @@ public class Bullet : MonoBehaviour
         {
             Enemy enemy = other.gameObject.GetComponent<Enemy>();
             enemy.OnDamage(damage);
-
-            Instantiate(hitEffect, transform.position, Quaternion.identity);
 
             Destroy(gameObject);
         }

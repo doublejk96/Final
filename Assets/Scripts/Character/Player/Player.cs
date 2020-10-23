@@ -23,8 +23,7 @@ public class Player : MonoBehaviour
         }
     }
     #endregion 
-
-    private PlayerController controller;
+    
     private Animator anim;
 
     [Header("Hp")]
@@ -32,64 +31,30 @@ public class Player : MonoBehaviour
     public float maxHp;
 
     [Header("Speed")]
-    public float attackSpeed;
-    public float reloadSpeed;
-
-    [Header("etc")]
     public float MoveSpeed;
+    public float attackSpeed;
+    public float reloadSpeed;    
 
     void Start()
     {
-        controller = GetComponent<PlayerController>();
         anim = GetComponent<Animator>();
-
-        RestPlayer();
     }
 
     void Update()
     {
-        FindEnemy();
-
-        anim.SetFloat("AttackSpeed", attackSpeed);
-        anim.SetFloat("ReloadSpeed", reloadSpeed);
+        AnimationSpeed();
     }
 
-    void RestPlayer()
+    public void RestPlayer()
     {
         curHp = maxHp;
     }
 
-    void FindEnemy()
+    void AnimationSpeed()
     {
-        float disToClosestEnemy = Mathf.Infinity;
+        anim.SetFloat("AttackSpeed", attackSpeed);
+        anim.SetFloat("ReloadSpeed", reloadSpeed);
+    }
 
-        Enemy closestEnemy = null;
-        Enemy[] enemies = GameObject.FindObjectsOfType<Enemy>();
-        foreach (Enemy curEnemy in enemies)
-        {
-            if (curEnemy.curHp > 0)
-            {
-                float disToCurEnemy = (curEnemy.transform.position - transform.position).sqrMagnitude;
-                if (disToCurEnemy < disToClosestEnemy)
-                {
-                    disToClosestEnemy = disToCurEnemy;
-                    closestEnemy = curEnemy;
-                }
-            }
-        }
-
-        if (controller.isMove == false)
-        {
-            if (closestEnemy != null)
-            {             
-                transform.LookAt(closestEnemy.transform);
-
-                controller.Attack();
-            }
-        }        
-        else if (closestEnemy == null)
-        {
-            return;
-        }       
-    }    
+       
 }

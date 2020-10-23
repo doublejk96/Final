@@ -1,13 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.Assertions.Must;
 
 public class PlayerController : MonoBehaviour
 {
     private Animator anim;
     private FixedJoystick joystick;
+    private CameraSetting cam;
 
     public bool isMove = false;
     public bool isReload = false;
@@ -16,13 +15,15 @@ public class PlayerController : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         joystick = FindObjectOfType<FixedJoystick>();
+        cam = FindObjectOfType<CameraSetting>();
     }
 
     void FixedUpdate()
     {
         Move();
+        FindEnemy();
         ReloadAnim();
-    }    
+    }  
 
     void Move()
     {
@@ -47,6 +48,40 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void FindEnemy()
+    {
+        float disToClosestEnemy = Mathf.Infinity;
+
+        Enemy closestEnemy = null;
+        Enemy[] enemies = GameObject.FindObjectsOfType<Enemy>();
+        foreach (Enemy curEnemy in enemies)
+        {
+            if (curEnemy.curHp > 0)
+            {
+                float disToCurEnemy = (curEnemy.transform.position - transform.position).sqrMagnitude;
+                if (disToCurEnemy < disToClosestEnemy)
+                {
+                    disToClosestEnemy = disToCurEnemy;
+                    closestEnemy = curEnemy;
+                }
+            }
+        }
+
+        if (isMove == false)
+        {
+            if (closestEnemy != null)
+            {
+                transform.LookAt(closestEnemy.transform);
+
+                Attack();
+            }
+        }
+        else if (closestEnemy == null)
+        {
+            return;
+        }
+    }
+
     public void Attack()
     {        
         if (isMove == false)
@@ -66,6 +101,8 @@ public class PlayerController : MonoBehaviour
 
     void Fire()
     {
+        cam.ShakeCamera(0.1f, 0.1f);
+
         GunManager.Ins.curAmmo--;
 
         GameObject bullet = GunManager.Ins.bulletPrefab;
