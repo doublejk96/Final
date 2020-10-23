@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
-{
+{  
     [Header("Script")]
     public Animator anim;
     public Player player;
+    public NavMeshAgent agent;
 
     [Header("Hp")]
     public float curHp;
@@ -16,6 +18,7 @@ public class Enemy : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         player = FindObjectOfType<Player>();
+        agent = GetComponent<NavMeshAgent>();
 
         curHp = maxHp;
     }
@@ -32,7 +35,9 @@ public class Enemy : MonoBehaviour
     }
 
     public virtual void Die()
-    {       
+    {
+        //agent.isStopped = true;
+
        // SpawnManager spawn = transform.parent.GetComponent<SpawnManager>();
        // spawn.enemyList.Remove(this);
     }

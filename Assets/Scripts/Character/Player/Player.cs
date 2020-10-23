@@ -52,8 +52,8 @@ public class Player : MonoBehaviour
 
     void AnimationSpeed()
     {
-        anim.SetFloat("AttackSpeed", attackSpeed);
-        anim.SetFloat("ReloadSpeed", reloadSpeed);
+        anim.SetFloat("attackSpeed", attackSpeed);
+        anim.SetFloat("reloadSpeed", reloadSpeed);
     }
 
        

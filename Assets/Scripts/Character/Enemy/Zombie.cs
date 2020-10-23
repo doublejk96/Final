@@ -3,14 +3,47 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Zombie : Enemy
-{  
+{
+    [Header("Speed")]
+    public float walkSpeed;
+
+    [Header("Distance")]
+    public float chaseDis;
+    public float attackDis;
+
     [Header("Effect")]
     public GameObject hitEffect;
     public GameObject dieEffect;
 
     void Update()
     {
-        transform.LookAt(player.transform);
+        AnimationSpeed();
+
+        ZombieAi();
+    }
+    void AnimationSpeed()
+    {
+        anim.SetFloat("walkSpeed", walkSpeed);
+    }
+
+    void ZombieAi()
+    {
+        anim.SetBool("isWalk", false);
+
+        float dis = Vector3.Distance(transform.position, player.transform.position);
+
+        if (dis <= chaseDis)
+        {
+            transform.LookAt(player.transform);
+
+            anim.SetBool("isWalk", true);
+            // 추격
+            agent.SetDestination(player.transform.position);
+        }
+        else if (dis <= attackDis)
+        {
+            // 공격
+        }
     }
 
     public override void OnDamage(float damage)
