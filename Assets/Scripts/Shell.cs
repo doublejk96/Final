@@ -11,5 +11,7 @@ public class Shell : MonoBehaviour
         float power = Random.Range(90, 120);
 
         rigid.AddForce(transform.right * power);
+
+        Destroy(gameObject, 10);
     }
 }

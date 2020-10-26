@@ -71,7 +71,7 @@ public class Player : MonoBehaviour
         curHp -= damage;
         curHp = Mathf.Max(0, curHp);
 
-        cam.ShakeCamera(0.15f, 0.3f);
+        cam.ShakeCamera(0.15f, 0.5f);
         Instantiate(hitEffect, transform.position + effectOffset, transform.rotation);
 
         if (curHp <= 0)

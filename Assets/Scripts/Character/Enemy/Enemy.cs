@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
-{  
+{
     [Header("Script")]
     protected Animator anim;
     protected Player player;
@@ -13,6 +13,8 @@ public class Enemy : MonoBehaviour
     [Header("Hp")]
     public float curHp;
     public float maxHp;
+
+    protected bool isDie = false;
 
     public void Start()
     {
@@ -36,9 +38,9 @@ public class Enemy : MonoBehaviour
 
     public virtual void Die()
     {
-        //agent.isStopped = true;
+        isDie = true;
 
-       // SpawnManager spawn = transform.parent.GetComponent<SpawnManager>();
-       // spawn.enemyList.Remove(this);
+        SpawnManager spawn = transform.parent.GetComponent<SpawnManager>();
+        spawn.enemyList.Remove(this);
     }
 }

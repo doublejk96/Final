@@ -31,22 +31,25 @@ public class PlayerController : MonoBehaviour
         float speed = Player.Ins.MoveSpeed;
 
         if (Player.Ins.curHp > 0)
-        {            
-            Vector3 velocity = new Vector3(x, 0, z) * speed * Time.deltaTime;
-
-            if (x == 0 && z == 0)
+        {
+            if (isReload == false)
             {
-                isMove = false;
-                anim.SetBool("isRun", false);
-            }
-            else
-            {
-                isMove = true;
-                anim.SetBool("isRun", true);
+                Vector3 velocity = new Vector3(x, 0, z) * speed * Time.deltaTime;
 
-                transform.position += velocity;
-                transform.LookAt(transform.position + velocity);
-            }
+                if (x == 0 && z == 0)
+                {
+                    isMove = false;
+                    anim.SetBool("isRun", false);
+                }
+                else
+                {
+                    isMove = true;
+                    anim.SetBool("isRun", true);
+
+                    transform.position += velocity;
+                    transform.LookAt(transform.position + velocity);
+                }
+            }            
         }        
     }
 
@@ -132,5 +135,6 @@ public class PlayerController : MonoBehaviour
     {
         isReload = false;
         GunManager.Ins.curAmmo = GunManager.Ins.maxAmmo;
+        
     }
 }

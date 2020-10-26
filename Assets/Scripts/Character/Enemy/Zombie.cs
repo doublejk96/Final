@@ -6,7 +6,6 @@ public class Zombie : Enemy
 
     [Header("Speed")]
     public float walkSpeed;
-    public float attackDelay;
 
     [Header("Distance")]
     public float chaseDis;
@@ -42,6 +41,7 @@ public class Zombie : Enemy
             anim.SetBool("isWalk", true);
             agent.SetDestination(player.transform.position);
         }
+
         if (dis <= attackDis)
         {
             if (Player.Ins.curHp > 0)

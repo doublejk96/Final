@@ -124,7 +124,7 @@ MonoBehaviour:
   damage: 1
   walkSpeed: 1.5
   attackDelay: 1
-  chaseDis: 5
+  chaseDis: 10
   attackDis: 0.5
   hitEffect: {fileID: 100000, guid: f06e78284f831ae469c74624ab5d513b, type: 3}
   dieEffect: {fileID: 100004, guid: 7867af58a6ec48846ae807eb4022fbaa, type: 3}
