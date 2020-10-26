@@ -6,7 +6,6 @@ public class PlayerController : MonoBehaviour
 {
     private Animator anim;
     private FixedJoystick joystick;
-    private CameraSetting cam;
 
     public bool isMove = false;
     public bool isReload = false;
@@ -15,7 +14,6 @@ public class PlayerController : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         joystick = FindObjectOfType<FixedJoystick>();
-        cam = FindObjectOfType<CameraSetting>();
     }
 
     void FixedUpdate()
@@ -101,7 +99,7 @@ public class PlayerController : MonoBehaviour
 
     void Fire()
     {
-        cam.ShakeCamera(0.1f, 0.1f);
+        Player.Ins.cam.ShakeCamera(0.1f, 0.1f);
 
         GunManager.Ins.curAmmo--;
 

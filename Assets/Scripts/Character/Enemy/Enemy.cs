@@ -6,9 +6,9 @@ using UnityEngine.AI;
 public class Enemy : MonoBehaviour
 {  
     [Header("Script")]
-    public Animator anim;
-    public Player player;
-    public NavMeshAgent agent;
+    protected Animator anim;
+    protected Player player;
+    protected NavMeshAgent agent;
 
     [Header("Hp")]
     public float curHp;

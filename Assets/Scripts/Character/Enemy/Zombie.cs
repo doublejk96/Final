@@ -1,11 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Zombie : Enemy
 {
+    public float damage;
+
     [Header("Speed")]
     public float walkSpeed;
+    public float attackTime;
+    public float attackDelay;
 
     [Header("Distance")]
     public float chaseDis;
@@ -15,9 +17,17 @@ public class Zombie : Enemy
     public GameObject hitEffect;
     public GameObject dieEffect;
 
+    public bool isAttack = false;
+
     void Update()
     {
         AnimationSpeed();
+
+        if (isAttack == false)
+        {
+            attackTime -= Time.deltaTime;
+            attackTime = Mathf.Max(0, attackTime);
+        }
 
         ZombieAi();
     }
@@ -37,13 +47,39 @@ public class Zombie : Enemy
             transform.LookAt(player.transform);
 
             anim.SetBool("isWalk", true);
-            // 추격
             agent.SetDestination(player.transform.position);
         }
-        else if (dis <= attackDis)
+        if (dis <= attackDis)
         {
-            // 공격
+            if (attackTime <= 0)
+            {
+                isAttack = true;
+
+                agent.isStopped = true;
+                anim.SetTrigger("isAttack");
+                attackTime = attackDelay;
+            }
         }
+    }
+
+    void StoppedFalse()
+    {
+        agent.isStopped = false;
+        isAttack = false;
+    }
+
+    public bool PlayerInAttackRange()
+    {
+        if (player != null)
+        {
+            Vector3 dir = player.transform.position - transform.position;
+            float dis = dir.magnitude;
+            if (dis <= attackDis)
+            {
+                player.OnDamage(damage);
+            }
+        }
+        return false;
     }
 
     public override void OnDamage(float damage)

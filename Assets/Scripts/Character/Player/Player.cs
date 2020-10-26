@@ -25,6 +25,9 @@ public class Player : MonoBehaviour
     #endregion 
     
     private Animator anim;
+    private Renderer render;
+
+    public CameraSetting cam;
 
     [Header("Hp")]
     public float curHp;
@@ -33,11 +36,18 @@ public class Player : MonoBehaviour
     [Header("Speed")]
     public float MoveSpeed;
     public float attackSpeed;
-    public float reloadSpeed;    
+    public float reloadSpeed;
+
+    [Header("Effect")]
+    public Vector3 effectOffset;
+    public GameObject hitEffect;
 
     void Start()
     {
         anim = GetComponent<Animator>();
+        render = GetComponentInChildren<Renderer>();
+
+        cam = FindObjectOfType<CameraSetting>();
     }
 
     void Update()
@@ -56,5 +66,17 @@ public class Player : MonoBehaviour
         anim.SetFloat("reloadSpeed", reloadSpeed);
     }
 
-       
+    public void OnDamage(float damage)
+    {
+        curHp--;
+        curHp = Mathf.Max(0, curHp);
+
+        cam.ShakeCamera(0.15f, 0.3f);
+        Instantiate(hitEffect, transform.position + effectOffset, transform.rotation);
+
+        if (curHp <= 0)
+        {
+
+        }
+    }
 }
