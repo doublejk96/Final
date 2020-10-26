@@ -92,6 +92,7 @@ public class OgreBoss : Enemy
             if (dis <= attackDis)
             {
                 player.OnDamage(damage);
+                player.rigid.AddForce(new Vector3(0, 500, 0));
             }
         }
         return false;

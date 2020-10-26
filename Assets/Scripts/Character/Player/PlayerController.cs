@@ -134,7 +134,6 @@ public class PlayerController : MonoBehaviour
     void Reload()
     {
         isReload = false;
-        GunManager.Ins.curAmmo = GunManager.Ins.maxAmmo;
-        
+        GunManager.Ins.curAmmo = GunManager.Ins.maxAmmo;        
     }
 }

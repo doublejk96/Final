@@ -27,6 +27,7 @@ public class Player : MonoBehaviour
     private Animator anim;
     private Renderer render;
 
+    public Rigidbody rigid;
     public CameraSetting cam;
 
     [Header("Hp")]
@@ -46,6 +47,7 @@ public class Player : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         render = GetComponentInChildren<Renderer>();
+        rigid = GetComponent<Rigidbody>();
 
         cam = FindObjectOfType<CameraSetting>();
     }
