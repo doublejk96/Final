@@ -25,7 +25,7 @@ public class Enemy : MonoBehaviour
 
     public virtual void OnDamage(float damage)
     {
-        curHp--;
+        curHp -= damage;
         curHp = Mathf.Max(0, curHp);
 
         if (curHp <= 0)

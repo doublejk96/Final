@@ -68,7 +68,7 @@ public class Player : MonoBehaviour
 
     public void OnDamage(float damage)
     {
-        curHp--;
+        curHp -= damage;
         curHp = Mathf.Max(0, curHp);
 
         cam.ShakeCamera(0.15f, 0.3f);
