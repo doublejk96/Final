@@ -6,7 +6,6 @@ public class Zombie : Enemy
 
     [Header("Speed")]
     public float walkSpeed;
-    public float attackTime;
     public float attackDelay;
 
     [Header("Distance")]
@@ -22,12 +21,6 @@ public class Zombie : Enemy
     void Update()
     {
         AnimationSpeed();
-
-        if (isAttack == false)
-        {
-            attackTime -= Time.deltaTime;
-            attackTime = Mathf.Max(0, attackTime);
-        }
 
         ZombieAi();
     }
@@ -51,13 +44,19 @@ public class Zombie : Enemy
         }
         if (dis <= attackDis)
         {
-            if (attackTime <= 0)
+            if (Player.Ins.curHp > 0)
             {
-                isAttack = true;
+                if (isAttack == false)
+                {
+                    agent.isStopped = true;
 
-                agent.isStopped = true;
-                anim.SetTrigger("isAttack");
-                attackTime = attackDelay;
+                    isAttack = true;
+                    anim.SetTrigger("isAttack");
+                }
+            }
+            else
+            {
+                anim.SetBool("isWalk", false);
             }
         }
     }

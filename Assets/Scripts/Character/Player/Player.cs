@@ -76,7 +76,12 @@ public class Player : MonoBehaviour
 
         if (curHp <= 0)
         {
-
+            Die();
         }
+    }
+
+    void Die()
+    {
+        anim.SetTrigger("isDie");
     }
 }
