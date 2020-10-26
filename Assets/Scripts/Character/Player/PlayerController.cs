@@ -29,21 +29,25 @@ public class PlayerController : MonoBehaviour
         float z = joystick.Vertical;
 
         float speed = Player.Ins.MoveSpeed;
-        Vector3 velocity = new Vector3(x, 0, z) * speed * Time.deltaTime;
 
-        if (x == 0 && z == 0)
-        {
-            isMove = false;
-            anim.SetBool("isRun", false);
-        }
-        else
-        {
-            isMove = true;
-            anim.SetBool("isRun", true);
+        if (Player.Ins.curHp > 0)
+        {            
+            Vector3 velocity = new Vector3(x, 0, z) * speed * Time.deltaTime;
 
-            transform.position += velocity;
-            transform.LookAt(transform.position + velocity);
-        }
+            if (x == 0 && z == 0)
+            {
+                isMove = false;
+                anim.SetBool("isRun", false);
+            }
+            else
+            {
+                isMove = true;
+                anim.SetBool("isRun", true);
+
+                transform.position += velocity;
+                transform.LookAt(transform.position + velocity);
+            }
+        }        
     }
 
     void FindEnemy()
