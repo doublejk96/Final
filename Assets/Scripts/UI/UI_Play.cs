@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UI_Play : MonoBehaviour
+public class UI_Play : UI_Base
 {
     private PlayerController controller;
 
@@ -37,8 +37,8 @@ public class UI_Play : MonoBehaviour
         }
 
         // 총알
-        float curAmmo = GunManager.Ins.curAmmo;
-        float maxAmmo = GunManager.Ins.maxAmmo;
+        float curAmmo = GunController.Ins.curAmmo;
+        float maxAmmo = GunController.Ins.maxAmmo;
         ammoText.text = curAmmo.ToString();
 
         if (curAmmo <= maxAmmo * 0.2f)

@@ -75,11 +75,13 @@ public class OgreBoss : Enemy
 
     void ShakeCam()
     {
+        SoundManager.Ins.Play("Ogre FootStep");
         Player.Ins.cam.ShakeCamera(0.2f, 0.2f);
     }
 
     void BigShakeCam()
     {
+        SoundManager.Ins.Play("Ogre FootStep");
         Player.Ins.cam.ShakeCamera(0.5f, 0.5f);
     }
 
@@ -117,6 +119,6 @@ public class OgreBoss : Enemy
 
         agent.isStopped = true;
         anim.SetTrigger("isDie");
-        coll.enabled = false;  
+        coll.enabled = false;
     }
 }

@@ -4,6 +4,26 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    #region Singleton
+    private static PlayerController instance;
+    public static PlayerController Ins
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = FindObjectOfType<PlayerController>();
+
+                if (null == instance)
+                {
+                    Debug.LogError("PlayerController Not Found");
+                }
+            }
+            return instance;
+        }
+    }
+    #endregion 
+
     private Animator anim;
     private FixedJoystick joystick;
 
@@ -53,6 +73,11 @@ public class PlayerController : MonoBehaviour
         }        
     }
 
+    void MoveSound()
+    {
+        SoundManager.Ins.Play("Player Move Sound");
+    }
+
     void FindEnemy()
     {
         float disToClosestEnemy = Mathf.Infinity;
@@ -91,14 +116,14 @@ public class PlayerController : MonoBehaviour
     {        
         if (isMove == false)
         {           
-            if (GunManager.Ins.fireTime <= 0)
+            if (GunController.Ins.fireTime <= 0)
             {
-                if (GunManager.Ins.curAmmo > 0)
+                if (GunController.Ins.curAmmo > 0)
                 {               
                     anim.SetTrigger("isFire");
 
-                    float nextAttack = (GunManager.Ins.smgAttackDelay / Player.Ins.attackSpeed);
-                    GunManager.Ins.fireTime = nextAttack;
+                    float nextAttack = (GunController.Ins.smgAttackDelay / Player.Ins.attackSpeed);
+                    GunController.Ins.fireTime = nextAttack;
                 }
             }                    
         }
@@ -108,14 +133,15 @@ public class PlayerController : MonoBehaviour
     {
         Player.Ins.cam.ShakeCamera(0.1f, 0.1f);
 
-        GunManager.Ins.curAmmo--;
+        GunController.Ins.curAmmo--;
+        SoundManager.Ins.Play("Player Fire Sound");
 
-        GameObject bullet = GunManager.Ins.bulletPrefab;
-        Transform firePos = GunManager.Ins.FirePos;
+        GameObject bullet = GunController.Ins.bulletPrefab;
+        Transform firePos = GunController.Ins.FirePos;
         Instantiate(bullet, firePos.position, firePos.rotation);
 
-        GameObject shell = GunManager.Ins.shellPrefab;
-        Transform shellPos = GunManager.Ins.shellPos;
+        GameObject shell = GunController.Ins.shellPrefab;
+        Transform shellPos = GunController.Ins.shellPos;
         Instantiate(shell, shellPos.position, shellPos.rotation);
     }
 
@@ -123,7 +149,7 @@ public class PlayerController : MonoBehaviour
     {
         if (isReload == false)
         {
-            if (GunManager.Ins.curAmmo == 0)
+            if (GunController.Ins.curAmmo == 0)
             {
                 isReload = true;
                 anim.SetTrigger("isReload");
@@ -134,6 +160,6 @@ public class PlayerController : MonoBehaviour
     void Reload()
     {
         isReload = false;
-        GunManager.Ins.curAmmo = GunManager.Ins.maxAmmo;        
+        GunController.Ins.curAmmo = GunController.Ins.maxAmmo;        
     }
 }

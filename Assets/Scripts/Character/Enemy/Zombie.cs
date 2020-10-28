@@ -21,8 +21,9 @@ public class Zombie : Enemy
     {
         AnimationSpeed();
 
-        ZombieAi();
+        ZombieAi();        
     }
+
     void AnimationSpeed()
     {
         anim.SetFloat("walkSpeed", walkSpeed);
@@ -56,7 +57,7 @@ public class Zombie : Enemy
             }
             else
             {
-                anim.SetBool("isWalk", false);
+                anim.SetTrigger("isEat");                
             }
         }
     }

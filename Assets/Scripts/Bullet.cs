@@ -16,12 +16,12 @@ public class Bullet : MonoBehaviour
         rigid = GetComponent<Rigidbody>();
         col = GetComponent<Collider>();
 
-        rigid.AddForce(transform.forward * GunManager.Ins.speed);
+        rigid.AddForce(transform.forward * GunController.Ins.speed);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        float damage = GunManager.Ins.damage;
+        float damage = GunController.Ins.damage;
 
         if (other.gameObject.tag == "Enemy")
         {

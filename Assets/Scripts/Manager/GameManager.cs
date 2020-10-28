@@ -27,5 +27,6 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         Player.Ins.RestPlayer();
+        UI_Manager.Ins.Init();
     }
 }

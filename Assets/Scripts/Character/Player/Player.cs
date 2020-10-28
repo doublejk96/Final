@@ -85,5 +85,12 @@ public class Player : MonoBehaviour
     void Die()
     {
         anim.SetTrigger("isDie");
+
+        Invoke("GameoverScene", 2f);
+    }
+
+    void GameoverScene()
+    {
+        UI_Manager.Ins.Show(UI_ID.GAMEOVER, true);
     }
 }

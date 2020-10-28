@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    private MapGenerator map;
-
     [Header("Enemy")]
     public List<GameObject> enemies;
     public List<GameObject> bosses;
@@ -17,11 +15,6 @@ public class SpawnManager : MonoBehaviour
     public float enemyCount;
     public float bossCount;
 
-    void Start()
-    {
-        map = FindObjectOfType<MapGenerator>();
-    }
-
     void Update()
     {
         EenemySpawn();
@@ -32,9 +25,8 @@ public class SpawnManager : MonoBehaviour
         if (enemyCount > 0)
         {
             SpawnEnemy();
-        }
-        
-        if (enemyList.Count <= 0)
+        }        
+        else if (enemyList.Count < 4)
         {
             BossSpawn();
         }
@@ -43,10 +35,10 @@ public class SpawnManager : MonoBehaviour
     void SpawnEnemy()
     {
         enemyCount--;
-
-        Transform randomTile = map.GetRandomOpenTile();        
+  
         int randomEnemy = Random.Range(0, enemies.Count);
-        GameObject enemyGo = Instantiate(enemies[randomEnemy], randomTile.position, Quaternion.identity);
+        Vector3 randomPos = transform.position + new Vector3(Random.Range(-5, 5), 0, Random.Range(-5, 5));
+        GameObject enemyGo = Instantiate(enemies[randomEnemy], randomPos, Quaternion.identity);
         Enemy enemy = enemyGo.GetComponent<Enemy>();
         enemy.transform.parent = transform;
         enemyList.Add(enemy);

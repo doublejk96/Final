@@ -31,21 +31,21 @@ public class RandomItem : MonoBehaviour
             // 공속 다운
             Player.Ins.attackSpeed--;
             // 총알 장전
-            GunManager.Ins.curAmmo++;
+            GunController.Ins.curAmmo++;
             // 총알 제거
-            GunManager.Ins.curAmmo--;
+            GunController.Ins.curAmmo--;
             // 탄창 증가
-            GunManager.Ins.maxAmmo++;
+            GunController.Ins.maxAmmo++;
             // 탄창 감소
-            GunManager.Ins.maxAmmo++;
+            GunController.Ins.maxAmmo++;
             // 이속 증가
             Player.Ins.MoveSpeed++;
             // 이속 다운
             Player.Ins.MoveSpeed--;
             // 데미지 증가
-            GunManager.Ins.damage++;
+            GunController.Ins.damage++;
             // 데미지 감소
-            GunManager.Ins.damage--;
+            GunController.Ins.damage--;
 
             Destroy(gameObject);
         }
