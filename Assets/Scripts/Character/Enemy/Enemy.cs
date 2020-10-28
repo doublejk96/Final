@@ -9,7 +9,6 @@ public class Enemy : MonoBehaviour
     protected Animator anim;
     protected Player player;
     protected NavMeshAgent agent;
-    private Rigidbody rigid;
 
     [Header("Hp")]
     public float curHp;
@@ -22,7 +21,6 @@ public class Enemy : MonoBehaviour
         anim = GetComponent<Animator>();
         player = FindObjectOfType<Player>();
         agent = GetComponent<NavMeshAgent>();
-        rigid = GetComponent<Rigidbody>();
 
         curHp = maxHp;
     }
