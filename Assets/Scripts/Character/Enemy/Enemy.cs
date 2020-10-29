@@ -42,5 +42,6 @@ public class Enemy : MonoBehaviour
 
         SpawnManager spawn = transform.parent.GetComponent<SpawnManager>();
         spawn.enemyList.Remove(this);
+        spawn.bossList.Remove(this);
     }
 }

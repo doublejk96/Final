@@ -36,7 +36,7 @@ public class Bullet : MonoBehaviour
 
             Destroy(gameObject);
         }
-        else
+        else if (other.gameObject.tag == "Obstacle")
         {
             Instantiate(wallEffect, transform.position, Quaternion.identity);
 

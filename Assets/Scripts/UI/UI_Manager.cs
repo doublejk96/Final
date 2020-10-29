@@ -5,7 +5,8 @@ using UnityEngine;
 public enum UI_ID
 {
     PLAY,
-    GAMEOVER
+    GAMEOVER,
+    GAMECLEAR
 }
 
 public class UI_Manager : MonoBehaviour

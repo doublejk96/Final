@@ -120,5 +120,7 @@ public class OgreBoss : Enemy
         agent.isStopped = true;
         anim.SetTrigger("isDie");
         coll.enabled = false;
+
+        UI_Manager.Ins.Show(UI_ID.GAMECLEAR, true);
     }
 }

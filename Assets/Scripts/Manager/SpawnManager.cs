@@ -4,40 +4,66 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    [Header("Enemy")]
+    #region Singleton
+    private static SpawnManager instance;
+    public static SpawnManager Ins
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = FindObjectOfType<SpawnManager>();
+
+                if (null == instance)
+                {
+                    Debug.LogError("SpawnManager Not Found");
+                }
+            }
+            return instance;
+        }
+    }
+    #endregion
+
+    private Door door;
+
+    [Header("Enemy Prefab")]
     public List<GameObject> enemies;
     public List<GameObject> bosses;
 
-    [Header("Spawn Enemy")]
+    [Header("Spawn Enemy List")]
     public List<Enemy> enemyList;
     public List<Enemy> bossList;
 
+    [Header("Spawn Count")]
     public float enemyCount;
     public float bossCount;
 
+    void Start()
+    {
+        door = FindObjectOfType<Door>();
+    }
+
     void Update()
     {
-        EenemySpawn();
-    }
-
-    void EenemySpawn()
-    {
-        if (enemyCount > 0)
+        if (door.isInDungeon == true)
         {
-            SpawnEnemy();
+            if (enemyCount > 0)
+            {
+                SpawnEnemy();
+            }
+            else if (enemyList.Count == 0)
+            {
+                BossSpawn();
+            }
         }        
-        else if (enemyList.Count < 4)
-        {
-            BossSpawn();
-        }
-    }
+    }    
 
     void SpawnEnemy()
-    {
+    {                
         enemyCount--;
-  
+
         int randomEnemy = Random.Range(0, enemies.Count);
-        Vector3 randomPos = transform.position + new Vector3(Random.Range(-5, 5), 0, Random.Range(-5, 5));
+        Vector3 randomPos = transform.position + new Vector3(Random.Range(-5, 5), 0, Random.Range(0, 5));
         GameObject enemyGo = Instantiate(enemies[randomEnemy], randomPos, Quaternion.identity);
         Enemy enemy = enemyGo.GetComponent<Enemy>();
         enemy.transform.parent = transform;
